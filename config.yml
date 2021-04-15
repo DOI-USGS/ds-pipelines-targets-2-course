@@ -1,5 +1,5 @@
-title: scipiper tips and tricks
-description: Common issues and approaches for debugging scipiper pipelines
+title: USGS targets tips and tricks
+description: Overview of conventions and best practices for using targets in USGS Data Science workflows
 template:
   repo: ds-pipelines-2-template
   name: ds-pipelines-2
