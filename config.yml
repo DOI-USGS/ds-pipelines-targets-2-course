@@ -27,16 +27,16 @@ steps:
 
 # -- section 30 --- 
    
-  - title: Overview of gotchas
+  - title: Overview of gotchas and best practices
     description: How to get past the gotchas without getting gotten again
     link: '{{ store.scipiper_gotchyas_url }}'
     event: issue_comment.created
     actions:
       - type: respond
-        with: 11-scipiper-debug.md
+        with: 11-targets-debug.md
         store:
           debug_url: '{{ result.data.html_url }}' 
-  - title: Debugging in a scipiper pipeline
+  - title: Debugging in a targets pipeline
     description: How to inspect parts of the pipeline and variables within functions
     link: '{{ store.debug_url }}'
     event: issue_comment.created
