@@ -51,7 +51,7 @@ steps:
     event: issue_comment.created
     actions:
       - type: respond
-        with: 13-why_dirty.md
+        with: 13-target-status.md
         store:
           why_dirty_url: '{{ result.data.html_url }}'  
   - title: Using tar_visnetwork() for target status of pipeline targets
