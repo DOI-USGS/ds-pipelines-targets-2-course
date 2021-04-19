@@ -46,7 +46,7 @@ steps:
         store:
           visualize_url: '{{ result.data.html_url }}'    
   - title: Visualizing and understanding the status of dependencies in a pipeline
-    description: How to inspect, view, and understand the state of pipeline targets with `diagram`
+    description: How to inspect, view, and understand the state of pipeline targets with `tar_glimpse`
     link: '{{ store.visualize_url }}'
     event: issue_comment.created
     actions:
