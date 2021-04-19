@@ -54,8 +54,8 @@ steps:
         with: 13-why_dirty.md
         store:
           why_dirty_url: '{{ result.data.html_url }}'  
-  - title: Using which_dirty() and why_dirty() for target status of pipeline targets
-    description: How to inspect, view, and understand the state of pipeline targets with `which_dirty` and `why_dirty`
+  - title: Using tar_visnetwork() for target status of pipeline targets
+    description: How to inspect, view, and understand the state of pipeline targets with `tar_visnetwork` and `tar_outdated`
     link: '{{ store.why_dirty_url }}'
     event: issue_comment.created
     actions:
