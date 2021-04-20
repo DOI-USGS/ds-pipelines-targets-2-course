@@ -72,7 +72,7 @@ steps:
         with: 15-undoc-file.md
         store:
           undoc_file_url: '{{ result.data.html_url }}' 
-  - title: Creating side-effect targets or undocumented outputs
+  - title: Creating side-effect targets or undocumented inputs
     description: If functions create outputs that aren't connected to the pipeline, they can get lost and cause unexpected issues. How and why to avoid creating side-effect targets. 
     link: '{{ store.undoc_file_url }}'
     event: issue_comment.created

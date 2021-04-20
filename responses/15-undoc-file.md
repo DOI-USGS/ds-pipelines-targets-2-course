@@ -12,9 +12,15 @@ Side-effect targets can be used effectively, but doing so requires a good unders
 #### undocumented inputs
 ---
 
-Additionally, it is tempting to code a filepath within a function which has information that needs to be accessed in order to run. This seems harmless, since functions are tracked by the dependency manager and any changes to those will trigger rebuilds, right? Not quite. If a file like `"1_fetch/in/my_metadata.csv"` is specified _in_ a function, but is not also an argument to the command in the remakefile recipe **or**  listed as a `depends` of the resulting target, any changes to the `"1_fetch/in/my_metadata.csv"` will go unnoticed by the dependency manager, since the string that specifies the file name remains unchanged. The system isn't smart enough to know that it needs to check whether that file has changed. 
+Additionally, it is tempting to code a filepath within a function which has information that needs to be accessed in order to run. This seems harmless, since functions are tracked by the dependency manager and any changes to those will trigger rebuilds, right? Not quite. If a filepath like `"1_fetch/in/my_metadata.csv"` is specified as an argument to a function but is not also a target in the makefile recipe, any changes to the `"1_fetch/in/my_metadata.csv"` will go unnoticed by the dependency manager, since the string that specifies the file name remains unchanged. The system isn't smart enough to know that it needs to check whether that file has changed. 
 
-As a rule, unless you are purposefully trying to hide changes in a file from the dependency manager, do not read non-argument files in the body of a function. :end:
+To depend on an input file, you need to set up a simple target that returns the filepath and use the target name (`my_metadata_csv` in our example) as input to targets that depend on it.
+
+```
+tar_target(my_metadata_csv, "1_fetch/in/my_metadata.csv", format = "file")
+```
+
+As a rule, unless you are purposefully trying to hide changes in a file from the dependency manager, do not put filepaths in the body of a function. :end:
 
 ---
 
