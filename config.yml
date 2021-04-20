@@ -87,13 +87,13 @@ steps:
     event: issue_comment.created
     actions:
       - type: respond
-        with: 17-inhibit-objects.md
+        with: 17-target-objects.md
         store:
-          inhibit_url: '{{ result.data.html_url }}'  
-  - title: Inhibiting conversion of R objects with I()
+          objects_url: '{{ result.data.html_url }}'  
+  - title: Using inputs to functions that are not targets
     description: >- 
       We've been limited to using only target objects and files as inputs into pipeline functions. I want more! You'll get more here. 
-    link: '{{ store.inhibit_url }}'
+    link: '{{ store.objects_url }}'
     event: issue_comment.created
     actions:
       - type: respond
