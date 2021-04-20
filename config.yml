@@ -97,16 +97,6 @@ steps:
     event: issue_comment.created
     actions:
       - type: respond
-        with: 18-target_name.md
-        store:
-          target_name_url: '{{ result.data.html_url }}'  
-  - title: The target_name special variable
-    description: >- 
-      Simplifying `target:command` relationships and reducing duplication
-    link: '{{ store.target_name_url }}'
-    event: issue_comment.created
-    actions:
-      - type: respond
         with: zz-goto-next-issue.md
       - type: closeIssue
         issue: '{{ store.scipiper_gotchyas_id }}'
