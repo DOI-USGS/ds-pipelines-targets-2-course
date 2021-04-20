@@ -1,8 +1,8 @@
 title: USGS targets tips and tricks
 description: Overview of conventions and best practices for using targets in USGS Data Science workflows
 template:
-  repo: ds-pipelines-2-template
-  name: ds-pipelines-2
+  repo: ds-pipelines-targets-2-template
+  name: ds-pipelines-targets-2
 before:
   - type: createIssue
     title: Overview of data science pipelines II
