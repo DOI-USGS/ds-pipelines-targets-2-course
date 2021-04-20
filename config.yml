@@ -81,8 +81,8 @@ steps:
         with: 16-dir-targets.md
         store:
           dir_targets_url: '{{ result.data.html_url }}'
-  - title: How (not to) depend on a directory for changes
-    description: It is handy to "depend" on the contents of an entire directory, so that when anything changes, a target can be rebuilt. In practice, doing so is harder than expected. 
+  - title: How to depend on a directory for changes
+    description: It is handy to "depend" on the contents of an entire directory, so that when anything changes, a target can be rebuilt.
     link: '{{ store.dir_targets_url }}'
     event: issue_comment.created
     actions:
