@@ -12,7 +12,7 @@ In `targets`, you can't set a breakpoint in the "normal" way, which would be cli
 
 You have a working, albeit brittle, pipeline in your course repository. You can try it out with `targets::tar_make()`. This pipeline has a number of things you'll work to fix later, but for now, it is a useful reference. The pipeline contains several functions which are defined in `.R` files. 
 
-So, if you wanted to look at what `download_files` where created within the `download_nwis_data` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file:
+So, if you wanted to look at what `download_files` where created within the `download_nwis_data` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file. Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
 
 ![browser()](https://user-images.githubusercontent.com/2349007/82158816-bed9bb00-984f-11ea-8892-b2aeb5e4818d.png)
 
