@@ -176,7 +176,6 @@ steps:
         store:
           target_switch_url: '{{ result.data.html_url }}'
           target_switch_id: '{{ result.data.number }}'
-
   - title: Exchange object and file targets in your pipelines
     description: An assignment where you'll be asked to swap objects and files as targets
     link: '{{ store.target_switch_url }}'
@@ -185,8 +184,32 @@ steps:
       - type: respond
         with: zz-goto-next-issue.md
       - type: createIssue
+        title: datasci conventions
+        body: 40-datasci-conventions.md
+        store:
+          target_conventions_url: '{{ result.data.html_url }}'
+          target_conventions_id: '{{ result.data.number }}'
+      - type: closeIssue
+        issue: '{{ store.target_switch_id }}'     
+  - title: Understanding USGS Data Science conventions and best practices
+    description: Learn about some of the unique ways USGS DS likes to build their pipelines
+    link: '{{ store.target_conventions_url }}'
+    event: issue_comment.created
+    actions:
+      - type: respond
+        with: 41-final-tips.md
+        store:
+          final_tips_url: '{{ result.data.html_url }}'
+  - title: Final tips for being a smart pipeliner
+    description: A few final notes about how to be strategic with your pipelines
+    link: '{{ store.final_tips_url }}'
+    event: issues.closed
+    actions:
+      - type: respond
+        with: zz-goto-next-issue.md
+      - type: createIssue
         title: >-
           What's next
         body: 90-whats-next.md
       - type: closeIssue
-        issue: '{{ store.target_switch_id }}'     
+        issue: '{{ store.final_tips_url }}'
