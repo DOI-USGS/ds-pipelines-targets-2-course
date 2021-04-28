@@ -10,7 +10,7 @@ First, a recap of key concepts that came from [intro-to-pipelines](https://lab.g
 - Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect deliberate outputs from these functions ("targets") to generate your final product.
 - "Skip the work you don't need" by taking advantage of a dependency manager. There was a video that covered a bit of `make`, and you were asked to experiment with `targets`.
-- Investing in _efficient_ reproducibility helps projects scale up with confidence. 
+- Invest in _efficient_ reproducibility to scale up projects with confidence. 
 
 This last concept was not addressed directly but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthly steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
 
