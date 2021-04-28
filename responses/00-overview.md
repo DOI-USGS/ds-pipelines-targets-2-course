@@ -7,7 +7,7 @@ We're assuming you were able to navigate through the [intro-to-pipelines](https:
 
 First, a recap of key concepts that came from [intro-to-pipelines](https://lab.github.com/USGS-R/intro-to-pipelines) :point_down:
 - Data science work should be organized thoughtfully. As Jenny Bryan notes, "File organization and naming are powerful weapons against chaos".
-- Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data (in practice, we often use `fetch` for this phase).
+- Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect deliberate outputs from these functions ("targets") to generate your final product.
 - "Skip the work you don't need" by taking advantage of a dependency manager. There was a video that covered a bit of `make`, and you were asked to experiment with `targets`.
 - Investing in _efficient_ reproducibility helps projects scale up with confidence. 
