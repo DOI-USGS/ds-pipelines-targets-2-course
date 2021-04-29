@@ -4,7 +4,7 @@ If you've written your own functions or scripts before, you may have run into th
 
 ![breakpoint](https://support.rstudio.com/hc/en-us/article_attachments/201608458/editor-breakpoint.png)
 
-Breakpoints allow you to run a function (or script) up until the line of the breakpoint, and then the evaluation pauses. You are able to inspect all variables available at that point in the evaluation, and even step carefully forward one line at a time. It is out of scope of this exercise to go through exactly how to use debuggers, but they are powerful and helpful tools. It would be a good idea to read up on them if you haven't run into breakpoints yet. 
+Breakpoints allow you to run a function (or script) up until the line of the breakpoint, and then the evaluation pauses. You are able to inspect all variables available at that point in the evaluation, and even step carefully forward one line at a time. It is out of scope of this exercise to go through exactly how to use debuggers, but they are powerful and helpful tools. It would be a good idea to [read up on them](https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio) if you haven't run into breakpoints yet. 
 
 In `targets`, you can't set a breakpoint in the "normal" way, which would be clicking on the line number after you sourced the script. Instead, you need to use the other method for debugging in R, which requires adding the function call `browser()` to the line where you'd like the function call to stop and specifying an additional argument when you call `tar_make()`. 
 
