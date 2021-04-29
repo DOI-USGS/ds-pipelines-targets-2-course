@@ -1,4 +1,4 @@
-In this section, we're going to go one by one through a series of tips that will help you avoid common pitfalls (or gotchas!) in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
+In this section, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
 
 
 - :mag: How to debug in a pipeline
