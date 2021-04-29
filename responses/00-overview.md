@@ -12,7 +12,7 @@ First, a recap of key concepts that came from [intro-to-pipelines](https://lab.g
 - "Skip the work you don't need" by taking advantage of a dependency manager. There was a video that covered a bit of `make`, and you were asked to experiment with `targets`.
 - Invest in _efficient_ reproducibility to scale up projects with confidence. 
 
-This last concept was not addressed directly but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthly steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
+This last concept was not addressed directly, but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthly steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
 
 ### What's ahead in pipelines II
 
