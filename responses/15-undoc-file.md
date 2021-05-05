@@ -14,10 +14,20 @@ Side-effect targets can be used effectively, but doing so requires a good unders
 
 Additionally, it is tempting to code a filepath within a function which has information that needs to be accessed in order to run. This seems harmless, since functions are tracked by the dependency manager and any changes to those will trigger rebuilds, right? Not quite. If a filepath like `"1_fetch/in/my_metadata.csv"` is specified as an argument to a function but is not also a target in the makefile recipe, any changes to the `"1_fetch/in/my_metadata.csv"` will go unnoticed by the dependency manager, since the string that specifies the file name remains unchanged. The system isn't smart enough to know that it needs to check whether that file has changed. 
 
-To depend on an input file, you need to set up a simple target that returns the filepath and use the target name (`my_metadata_csv` in our example) as input to targets that depend on it.
+To depend on an input file, you first need to set up a simple target whose command returns the filepath of said file. Like so:
 
 ```
 tar_target(my_metadata_csv, "1_fetch/in/my_metadata.csv", format = "file")
+```
+
+Now say you had a function that needed this metadata input file for plotting because it contains latitude and longitude for your sites. To depend on this file as input, do this:
+```
+tar_target(map_of_sites, make_a_map(metadata_file = my_metadata_csv))
+```
+
+but *NOT* like this (this would be the method that doesn't track changes to the file!):
+```
+tar_target(map_of_sites, make_a_map(metadata_file = "1_fetch/in/my_metadata.csv"))
 ```
 
 As a rule, unless you are purposefully trying to hide changes in a file from the dependency manager, do not put filepaths in the body of a function. :end:
