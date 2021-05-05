@@ -1,4 +1,4 @@
-### What to do when you want to specify a non-build-object input to a function? 
+### What to do when you want to specify a non-target input to a command? 
 
 Wow, we've gotten this far and haven't written a function that accepts anything other than an object target or a file target. I feel so constrained!
 
@@ -62,7 +62,7 @@ list(
   )
 )
 ```
-By adding this `dummy` object to our `command` argument for the `work_files` target, we can modify the dummy contents any time we want to force the update of `work_files`. Making a change to the text in the `dummy` argument allows us to easily record when we last manually refreshed the pipeline's view of what is downloaded from ScienceBase. You may see the use of these `dummy` arguments in spots where there is no other trigger that would cause a rebuild, such as pulling data from a remote webservice or website when targets has no way of knowing that new data are available on the same service URL.
+By adding this `dummy` object to our `command` argument for the `work_files` target, we can modify the dummy contents any time we want to force the update of `work_files`. Updating the `dummy` argument to today's date allows us to simultaneously force the update and record when we last downloaded the data from ScienceBase. You may see the use of these `dummy` arguments in spots where there is no other trigger that would cause a rebuild, such as pulling data from a remote webservice or website when `targets` has no way of knowing that new data are available on the same service URL.
 
 ---
 

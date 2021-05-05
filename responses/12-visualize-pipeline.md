@@ -76,7 +76,7 @@ The diagram also shows how the inputs of one function create connections to the 
 
 #### tar_manifest()
 
-Another useful technique for examining your pipeline connections is to use `tar_manifest()`, which returns a data.frame of information about the targets. While visual examination is convenient, sometimes it is useful to have programmatic access to your target names. Below is the table that is returned from `tar_manifest()` (remember that yours might be slightly different because it won't incldue the two new files). 
+Another useful technique for examining your pipeline connections is to use `tar_manifest()`, which returns a data.frame of information about the targets. While visual examination gives a complete overview, sometimes it is also useful to have programmatic access to your target names. Below is the table that is returned from `tar_manifest()` (remember that yours might be slightly different because it won't include the two new files). 
 
 ```r
 tar_manifest()
@@ -100,5 +100,4 @@ tar_manifest()
 
 <hr>
 <h3 align="center">I'll sit patiently until you comment</h3>
-
 

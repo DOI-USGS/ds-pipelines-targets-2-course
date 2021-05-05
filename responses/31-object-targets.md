@@ -2,15 +2,15 @@
 
 As stated above, object targets are R objects that represent intermediate objects in an analysis.
 
-"R objects" are common in the example pipelines we have shown before. They are distinguished from file targets in the following ways:
+Object targets are common in the example pipelines we have shown before. They are distinguished from file targets in the following ways:
 - The target name does not have a file extension (e.g., "_csv") and resembles an R variable name (because that is basically what the object target is)
-- The function that creates the target returns some data to generate the target as opposed to writing to or creating a file, a la `write.file(target_file)` (there are all kinds of functions that write files, including `write.csv`, `cat`, `write_feather`, `nc_create`, etc). Data can be returned from a function either because R functions return the value of the last expression evaluated or because the function explicitly specifies what is returned, such as using `return(target_data)`.
+- The function that creates the target returns some data to generate the target as opposed to creating or appending to a file, e.g., with `write_csv`, `ggsave`, `write_feather`, `nc_create`, etc. The return value of a function is either the value of the last expression in the function or the argument to a call to `return()`.
 
 These objects are often used because they offer a brevity advantage over files (e.g., you don't need to pass in a filename to the function) and preserve the classes and formatting of the data, which makes it a bit easier to keep dates, factors, and other special data types from changing when you write - and then later read in - a file (such as a .csv). Objects also give you the illusion that they aren't taking up space in your project directory and make workspaces look a bit tidier.
 
-The "illusion" :tophat::rabbit: of objects not taking up space is because behind the scenes, these objects are actually written to file (.rds files, to be specific). You can see what exists under the hood with `dir('_targets/objects')`
+The "illusion" :tophat::rabbit: of objects not taking up space is because behind the scenes, these objects are actually written to file (.rds files, to be specific). You can see what exists under the hood with `dir('_targets/objects')`. The default is for `targets` to store these as `.rds` files. There are other formats that can be used to store the intermediate objects; if you're curious, check out the documentation for the `format` argument to `tar_target()`.
 
-And I was able to take a look at that same object referenced in {{ repoUrl }}/issues/{{ store.many_targets_id }} by using
+You can take a look at that same object referenced in {{ repoUrl }}/issues/{{ store.many_targets_id }} by using
 ```r
 readRDS('_targets/objects/map.config')
 $missing_data
