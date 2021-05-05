@@ -53,10 +53,10 @@ steps:
       - type: respond
         with: 13-target-status.md
         store:
-          why_dirty_url: '{{ result.data.html_url }}'  
+          why_outdated_url: '{{ result.data.html_url }}'  
   - title: Using tar_visnetwork() for target status of pipeline targets
     description: How to inspect, view, and understand the state of pipeline targets with `tar_visnetwork` and `tar_outdated`
-    link: '{{ store.why_dirty_url }}'
+    link: '{{ store.why_outdated_url }}'
     event: issue_comment.created
     actions:
       - type: respond

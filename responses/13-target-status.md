@@ -1,25 +1,25 @@
 ### Using tar_visnetwork() and tar_outdated() to explore status of pipeline targets
 
-In the image contained within the previous comment, all of the shapes are circles of the same color. `tar_glimpse()` is useful to verify your pipeline connections, but once you start building your pipeline `tar_visnetwork()` creates a dependency diagram with more information and styles the shapes in ways to signify which targets are out of date ("dirty") or don't need to rebuild. 
+In the image contained within the previous comment, all of the shapes are circles of the same color. `tar_glimpse()` is useful to verify your pipeline connections, but once you start building your pipeline `tar_visnetwork()` creates a dependency diagram with more information and styles the shapes in ways to signify which targets are out of date or don't need to rebuild. 
 
-We've put some fragile elements in the pipeline that will be addressed later, but if you were able to muscle through the failures with multiple calls to `tar_make()`, you likely were able to build the figure at the end of the dependency chain. For this example, we'll stop short of building the `figure_1_png` target by calling `tar_make('site_data_styled')` instead to illustrate the concept of a dirty target. 
+We've put some fragile elements in the pipeline that will be addressed later, but if you were able to muscle through the failures with multiple calls to `tar_make()`, you likely were able to build the figure at the end of the dependency chain. For this example, we'll stop short of building the `figure_1_png` target by calling `tar_make('site_data_styled')` instead to illustrate an outdated target. 
 
-#### Which targets are incomplete/dirty?
+#### Which targets are incomplete/outdated?
 
 The output of `tar_visnetwork()` after running `tar_make('site_data_styled')` (and having never run `tar_make()`) looks like this:
 ![visnetwork](https://user-images.githubusercontent.com/13220910/115301367-b3a9a200-a126-11eb-95da-f31f0f8f3d56.png)
 
 Only the colors have changed from the last example, signifying that the darker targets are "complete", but that `figure_1_png` and the two `data.csv` files still don't exist. 
 
-The `targets` package has a useful function called `tar_outdated()` which will list the incomplete ("dirty") targets that need to be updated in order to satisfy the output (once again, the default for this function is to reference all targets in the pipeline).
+The `targets` package has a useful function called `tar_outdated()` which will list the incomplete targets that need to be updated in order to satisfy the output (once again, the default for this function is to reference all targets in the pipeline).
 
 ```r
 tar_outdated()
 [1] "nwis_01435000_data_csv" "nwis_01427207_data_csv" "figure_1_png"                
 ```
-This output tells us the same thing as the visual, namely that these three targets :point_up: are incomplete/dirty.
+This output tells us the same thing as the visual, namely that these three targets :point_up: are incomplete/outdated.
 
-A build of the figure with `tar_make('figure_1_png')` will update the target dependencies, result in a `tar_visnetwork()` output which darkens the fill color on the `figure_1_png` shape, and cause a call to `tar_outdated("figure_1_png")` to result in an empty character vector, `character(0)`, letting the user know the target is not dirty. 
+A build of the figure with `tar_make('figure_1_png')` will update the target dependencies, result in a `tar_visnetwork()` output which darkens the fill color on the `figure_1_png` shape, and cause a call to `tar_outdated("figure_1_png")` to result in an empty character vector, `character(0)`, letting the user know the target is not outdated. 
 
 ---
 
@@ -30,7 +30,7 @@ tar_visnetwork("3_visualize/out/figure_1.png")
 
 ![visnetwork_fxnchange](https://user-images.githubusercontent.com/13220910/115302212-cd97b480-a127-11eb-9636-930ce7e02cb1.png)
 
-In the case of fixed arguments, changing the argument names, values, _or even the order they are specified_ will create a change in the function definition and cause the output target to be considered dirty. Adding comments to the function code does not cause the function to be seen as changed.
+In the case of fixed arguments, changing the argument names, values, _or even the order they are specified_ will create a change in the function definition and cause the output target to be considered outdated. Adding comments to the function code does not cause the function to be seen as changed.
 
 ---
 
