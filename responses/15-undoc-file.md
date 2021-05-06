@@ -30,7 +30,7 @@ but *NOT* like this (this would be the method that doesn't track changes to the 
 tar_target(map_of_sites, make_a_map(metadata_file = "1_fetch/in/my_metadata.csv"))
 ```
 
-As a rule, unless you are purposefully trying to hide changes in a file from the dependency manager, do not put filepaths in the body of a function. :end:
+As a general rule, do not put filepaths in the body of a function. :end:
 
 ---
 
