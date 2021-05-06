@@ -1,16 +1,12 @@
-`remake` is the R package that underlies many of `scipiper`'s functions. Here we've borrowed some text from the `remake` [github repo](https://github.com/richfitz/remake/blob/e29028b548950a3132ea2d045b7f67344ce22a6b/doc/concepts.md) (credit to [richfitz](https://github.com/richfitz), although we've lightly edited the original text) to explain differences between targets
 
 ### Targets
 
-"Targets" are the main things that `remake` interacts with.  They represent things that are made (they're also the vertices of the [dependency graph](http://en.wikipedia.org/wiki/Dependency_graph)).  If you want to make a plot called `plot.pdf`, then that's a target.  If you depend on a dataset called `data.csv`, that's a target (even if it already exists).
+"Targets" are the main things that the `targets` package interacts with (if the name hadn't already implied that :zany_face:). They represent things that are made (they're also the vertices of the [dependency graph](http://en.wikipedia.org/wiki/Dependency_graph)). If you want to make a plot called `plot.pdf`, then that's a target. If you depend on a dataset called `data.csv`, that's a target (even if it already exists).
 
-There are several types of targets:
+In `targets`, there are two main types:
 
-* **files**: The name of a file target is the same as its path. Something is actually stored in the file, and it's possible for the file contents to be modified outside of `remake` (files are the main types of targets that `make` deals with, since it is language agnostic). Within files, there are two sub-types:
-  - *implicit*: these are file targets that are depended on somewhere in your process, but for which no rule to build them exists (i.e., there is no `command` in a remakefile). You can't build these of course. However, `remake` will build an implicit file target for them so it can internally monitor changes to that file.
-  - *explicit*: these are the file targets that are built _by_ rules that were defined within your pipeline (i.e., command-to-target recipe exists in a remakefile).
-* **objects**: These are R objects that represent intermediate objects in an analysis. However, these objects are transparently stored to disk so that they persist across R sesssions. Unlike actual R objects though they won't appear in your workspace and a little extra work is required to get at them.
-* **fake**: Fake targets are simply pointers to other targets (in `make` these are "phoney" targets). The `all` depends on all the "end points" of your analysis is a "fake" target. Running `scmake("all")` will build all of your targets, or verify that they are up to date.
+* **files**: These are the targets that need to have `format = "file"` added as an argument to `tar_target()` and their command must return the filepath(s). We have learned that file targets can be single files, a vector of filepaths, or a directory. USGS Data Science workflows name file targets using their base name and their file extension, e.g. the target for `"1_fetch/out/data.csv"` would be `"data_csv"`. If the file name is really long, you can always simplify it for the target name but it is important to include `_[extension]` as a suffix. Additionally, USGS Data Science pipelines include the filenames created by file targets as typed-out arguments in the target recipe, or in a comment in the target definition. This practice ensures that you and your colleagues will only have to read the makefile, not the function code, to learn what file is being created. 
+* **objects**: These are R objects that represent intermediate objects in an analysis. Behind the scenes, these objects are stored to disk so that they persist across R sessions. And unlike typical R objects, they do not exist in your workspace unless you explicitly load them (run `tar_load(target_name)`).
 
 ---
 :keyboard: Activity: Assign yourself to this issue to get started.

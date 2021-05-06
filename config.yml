@@ -1,8 +1,8 @@
-title: scipiper tips and tricks
-description: Common issues and approaches for debugging scipiper pipelines
+title: USGS targets tips and tricks
+description: Overview of conventions and best practices for using targets in USGS Data Science workflows
 template:
-  repo: ds-pipelines-2-template
-  name: ds-pipelines-2
+  repo: ds-pipelines-targets-2-template
+  name: ds-pipelines-targets-2
 before:
   - type: createIssue
     title: Overview of data science pipelines II
@@ -18,6 +18,18 @@ steps:
       - type: respond
         with: zz-goto-next-issue.md
       - type: createIssue
+        title: Local setup
+        body: 01-setup.md
+        store:
+          setup_issue_url: '{{ result.data.html_url }}'
+  - title: Local setup
+    description: Set up the code locally so that you are prepared to test functions and make changes
+    link: '{{ store.setup_issue_url }}'
+    event: issues.closed
+    actions:
+      - type: respond
+        with: zz-goto-next-issue.md
+      - type: createIssue
         title: How to get past the gotchas without getting gotten again
         body: 10-scipiper-gotchas.md
         store:
@@ -27,16 +39,16 @@ steps:
 
 # -- section 30 --- 
    
-  - title: Overview of gotchas
+  - title: Overview of gotchas and best practices
     description: How to get past the gotchas without getting gotten again
     link: '{{ store.scipiper_gotchyas_url }}'
     event: issue_comment.created
     actions:
       - type: respond
-        with: 11-scipiper-debug.md
+        with: 11-targets-debug.md
         store:
           debug_url: '{{ result.data.html_url }}' 
-  - title: Debugging in a scipiper pipeline
+  - title: Debugging in a targets pipeline
     description: How to inspect parts of the pipeline and variables within functions
     link: '{{ store.debug_url }}'
     event: issue_comment.created
@@ -46,17 +58,17 @@ steps:
         store:
           visualize_url: '{{ result.data.html_url }}'    
   - title: Visualizing and understanding the status of dependencies in a pipeline
-    description: How to inspect, view, and understand the state of pipeline targets with `diagram`
+    description: How to inspect, view, and understand the state of pipeline targets with `tar_glimpse`
     link: '{{ store.visualize_url }}'
     event: issue_comment.created
     actions:
       - type: respond
-        with: 13-why_dirty.md
+        with: 13-target-status.md
         store:
-          why_dirty_url: '{{ result.data.html_url }}'  
-  - title: Using which_dirty() and why_dirty() for target status of pipeline targets
-    description: How to inspect, view, and understand the state of pipeline targets with `which_dirty` and `why_dirty`
-    link: '{{ store.why_dirty_url }}'
+          why_outdated_url: '{{ result.data.html_url }}'  
+  - title: Using tar_visnetwork() for target status of pipeline targets
+    description: How to inspect, view, and understand the state of pipeline targets with `tar_visnetwork` and `tar_outdated`
+    link: '{{ store.why_outdated_url }}'
     event: issue_comment.created
     actions:
       - type: respond
@@ -72,7 +84,7 @@ steps:
         with: 15-undoc-file.md
         store:
           undoc_file_url: '{{ result.data.html_url }}' 
-  - title: Creating side-effect targets or undocumented outputs
+  - title: Creating side-effect targets or undocumented inputs
     description: If functions create outputs that aren't connected to the pipeline, they can get lost and cause unexpected issues. How and why to avoid creating side-effect targets. 
     link: '{{ store.undoc_file_url }}'
     event: issue_comment.created
@@ -81,29 +93,19 @@ steps:
         with: 16-dir-targets.md
         store:
           dir_targets_url: '{{ result.data.html_url }}'
-  - title: How (not to) depend on a directory for changes
-    description: It is handy to "depend" on the contents of an entire directory, so that when anything changes, a target can be rebuilt. In practice, doing so is harder than expected. 
+  - title: How to depend on a directory for changes
+    description: It is handy to "depend" on the contents of an entire directory, so that when anything changes, a target can be rebuilt.
     link: '{{ store.dir_targets_url }}'
     event: issue_comment.created
     actions:
       - type: respond
-        with: 17-inhibit-objects.md
+        with: 17-target-objects.md
         store:
-          inhibit_url: '{{ result.data.html_url }}'  
-  - title: Inhibiting conversion of R objects with I()
+          objects_url: '{{ result.data.html_url }}'  
+  - title: Using non-target inputs in commands
     description: >- 
       We've been limited to using only target objects and files as inputs into pipeline functions. I want more! You'll get more here. 
-    link: '{{ store.inhibit_url }}'
-    event: issue_comment.created
-    actions:
-      - type: respond
-        with: 18-target_name.md
-        store:
-          target_name_url: '{{ result.data.html_url }}'  
-  - title: The target_name special variable
-    description: >- 
-      Simplifying `target:command` relationships and reducing duplication
-    link: '{{ store.target_name_url }}'
+    link: '{{ store.objects_url }}'
     event: issue_comment.created
     actions:
       - type: respond
@@ -186,7 +188,6 @@ steps:
         store:
           target_switch_url: '{{ result.data.html_url }}'
           target_switch_id: '{{ result.data.number }}'
-
   - title: Exchange object and file targets in your pipelines
     description: An assignment where you'll be asked to swap objects and files as targets
     link: '{{ store.target_switch_url }}'
@@ -195,8 +196,30 @@ steps:
       - type: respond
         with: zz-goto-next-issue.md
       - type: createIssue
+        title: datasci conventions
+        body: 40-datasci-conventions.md
+        store:
+          target_conventions_url: '{{ result.data.html_url }}'
+          target_conventions_id: '{{ result.data.number }}'
+      - type: closeIssue
+        issue: '{{ store.target_switch_id }}'     
+  - title: Understanding USGS Data Science conventions and best practices
+    description: Learn about some of the unique ways USGS DS likes to build their pipelines
+    link: '{{ store.target_conventions_url }}'
+    event: issue_comment.created
+    actions:
+      - type: respond
+        with: 41-final-tips.md
+        store:
+          final_tips_url: '{{ result.data.html_url }}'
+  - title: Final tips for being a smart pipeliner
+    description: A few final notes about how to be strategic with your pipelines
+    link: '{{ store.final_tips_url }}'
+    event: issues.closed
+    actions:
+      - type: respond
+        with: zz-goto-next-issue.md
+      - type: createIssue
         title: >-
           What's next
         body: 90-whats-next.md
-      - type: closeIssue
-        issue: '{{ store.target_switch_id }}'     
