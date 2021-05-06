@@ -1,8 +1,7 @@
 ## How to make decisions on how many targets to use and how targets are defined
 
 ### background 
-Isn't it satisfying to work through a fairly lengthy data workflow and then return to the project and it _just works_? For the past few years, we have been capturing the steps that go into creating results, figures, or tables appearing in data visualizations or research papers. There are [recipes for reproducibility](https://github.com/USGS-VIZLAB/water-use-15/blob/master/viz.yaml) used to create complex, interactive data visualizations, such as 
-[![this water use data viz](https://user-images.githubusercontent.com/2349007/82119731-85695880-9746-11ea-914c-77b3943c8d29.png)](https://owi.usgs.gov/vizlab/water-use-15 "water use data viz")
+Isn't it satisfying to work through a fairly lengthy data workflow and then return to the project and it _just works_? For the past few years, we have been capturing the steps that go into creating results, figures, or tables appearing in data visualizations or research papers. There are recipes for reproducibility used in complex, collaborative modeling projects, such as in [this reservoir temperature modeling pipeline](https://code.usgs.gov/wma/wp/res-temperature-process-models) and in [this pipeline to manage downloads of forecasted meteorological driver data](https://code.usgs.gov/wma/wp/forecasted-met-drivers). _Note that you need to be able to access internal USGS websites to see these examples and these were developed early on in the Data Science adoption of `targets` so may not showcase all of our adopted best practices_.
 
 ---
 
