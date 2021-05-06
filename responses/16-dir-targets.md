@@ -5,21 +5,6 @@ You might have a project where there is a directory :file_folder: with a collect
 In a data pipeline, we'd want assurance that any time the number of files changes, we'd rebuild the resulting data.frame. Likewise, if at any point the _contents_ of any one of the files changes, we'd also want to re-build the data.frame. 
 
 This hypothetical example could be coded as 
-```r
-source("combine_files.R")
-
-list(
-  tar_target(
-    plot_data, 
-    combine_into_df(c('1_fetch/in/file1.csv',
-                      '1_fetch/in/file2.csv',
-                      '1_fetch/in/file3.csv'))
-  ),
-  tar_target(figure_1_png, my_plot(plot_data))
-)
-```
-
-:point_up: But this coding wouldn't work, as it only tells the dependency manager to track the filepaths as a character vector and doesn't tell it to track changes in the files themselves. So, the only way it would rebuild is if the filepaths themselves changed. So, we need to recode so that `targets` tracked those as files by creating a target whose command returned a vector of filepaths and included the argument `format = "file"` (recall that we learned a bit about input files as targets in [the previous section]({{ store.undoc_file_url }})). 
 
 ```r
 library(targets)
