@@ -18,6 +18,18 @@ steps:
       - type: respond
         with: zz-goto-next-issue.md
       - type: createIssue
+        title: Local setup
+        body: 01-setup.md
+        store:
+          setup_issue_url: '{{ result.data.html_url }}'
+  - title: Local setup
+    description: Set up the code locally so that you are prepared to test functions and make changes
+    link: '{{ store.setup_issue_url }}'
+    event: issues.closed
+    actions:
+      - type: respond
+        with: zz-goto-next-issue.md
+      - type: createIssue
         title: How to get past the gotchas without getting gotten again
         body: 10-scipiper-gotchas.md
         store:
