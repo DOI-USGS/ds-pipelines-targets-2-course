@@ -223,5 +223,3 @@ steps:
         title: >-
           What's next
         body: 90-whats-next.md
-      - type: closeIssue
-        issue: '{{ store.final_tips_url }}'

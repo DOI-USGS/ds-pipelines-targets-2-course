@@ -17,6 +17,6 @@ As a resource for later, here are links to the content you just completed
 - :unlock: [`.gitignore` and commenting pipeline code]({{ store.final_tips_url }})
 
 
-:keyboard: Activity: If you have comments or questions, add them below and then assign a course lead this issue to engage in dialogue. When you are satisfied with the conversation, close this issue.
+:keyboard: You have now completed the course :tada: If you have comments or questions, add them below and then assign a course lead this issue to engage in dialogue. 
 
 
