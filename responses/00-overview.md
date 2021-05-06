@@ -1,11 +1,11 @@
 **Welcome to the second installment of "introduction to data pipelines"** at USGS, @{{ user.username }}!! :sparkles:
 
-We're assuming you were able to navigate through the [intro-to-pipelines](https://lab.github.com/USGS-R/intro-to-pipelines) course and that you learned a few things about organizing your code for readability, re-use, and collaboration. You were also introduced to two key things through the makefile: a way to program connections between functions and files, and the concept of a dependency manager that skips parts of the workflow that don't need to be re-run. 
+We're assuming you were able to navigate through the [intro-to-targets-pipelines](https://lab.github.com/USGS-R/intro-to-targets-pipelines) course and that you learned a few things about organizing your code for readability, re-use, and collaboration. You were also introduced to two key things through the makefile: a way to program connections between functions and files, and the concept of a dependency manager that skips parts of the workflow that don't need to be re-run. 
 
 ---
 ### Recap of pipelines I
 
-First, a recap of key concepts that came from [intro-to-pipelines](https://lab.github.com/USGS-R/intro-to-pipelines) :point_down:
+First, a recap of key concepts that came from [intro-to-targets-pipelines](https://lab.github.com/USGS-R/intro-to-targets-pipelines) :point_down:
 - Data science work should be organized thoughtfully. As Jenny Bryan notes, "File organization and naming are powerful weapons against chaos".
 - Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect outputs from these functions ("targets") to generate your final product.
