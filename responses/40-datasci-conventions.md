@@ -58,4 +58,4 @@ You could then build the full pipeline by running `tar_make()`, or run specific 
 :keyboard: Activity: Split your pipeline targets into the phases fetch, process, and visualize. Use a different makefile for each phase and follow our phase-naming conventions to name the makefiles and list objects. Also, rename your targets using the appropriate prefix (`p1_`, `p2_`, `p3_`). Run `tar_make()` and open a pull request. Paste your build status as a comment to the PR and assign your designated course instructor as a reviewer. 
 
 <hr>
-<h3 align="center">I'll sit patiently until you open a new pull request</h3>
+<h3 align="center">I'll sit patiently until your pull request has been merged</h3>
