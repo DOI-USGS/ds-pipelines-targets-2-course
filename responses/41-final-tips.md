@@ -10,3 +10,5 @@ We encourage excessive commenting of code! It is so important to explain what yo
 ---
 
 `targets` is part of the rOpenSci community of packages and is being used by a wide net of R users. If you have further questions, you can always consult a Data Science colleague, but also try Google and take advantage of the extensive documentation available in the [`targets` R Package User Manual](https://books.ropensci.org/targets/).
+
+<h3 align="center">Close this issue to continue</h3>
