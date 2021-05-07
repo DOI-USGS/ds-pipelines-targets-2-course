@@ -196,7 +196,7 @@ steps:
       - type: respond
         with: zz-goto-next-issue.md
       - type: createIssue
-        title: datasci conventions
+        title: USGS Data Science conventions
         body: 40-datasci-conventions.md
         store:
           target_conventions_url: '{{ result.data.html_url }}'
