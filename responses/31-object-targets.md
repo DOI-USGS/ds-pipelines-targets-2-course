@@ -3,7 +3,7 @@
 As stated above, object targets are R objects that represent intermediate objects in an analysis.
 
 Object targets are common in the example pipelines we have shown before. They are distinguished from file targets in the following ways:
-- The target name does not have a file extension (e.g., "_csv") and resembles an R variable name (because that is basically what the object target is)
+- The target name does not have a file extension (e.g., `_csv`) and resembles an R variable name (because that is basically what the object target is)
 - The function that creates the target returns some data to generate the target as opposed to creating or appending to a file, e.g., with `write_csv`, `ggsave`, `write_feather`, `nc_create`, etc. The return value of a function is either the value of the last expression in the function or the argument to a call to `return()`.
 
 These objects are often used because they offer a brevity advantage over files (e.g., you don't need to pass in a filename to the function) and preserve the classes and formatting of the data, which makes it a bit easier to keep dates, factors, and other special data types from changing when you write - and then later read in - a file (such as a .csv). Objects also give you the illusion that they aren't taking up space in your project directory and make workspaces look a bit tidier.

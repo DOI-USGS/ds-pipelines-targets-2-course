@@ -15,7 +15,7 @@ cd ds-pipelines-targets-2
 
 You can also open this project in RStudio by double-clicking the .Rproj file in the `ds-pipelines-targets-2` directory.
 
-:glowing_star: Now you have the repository locally! Follow along with the commands introduced and make changes to the code as requested throughout the remainder of the course.
+:star: Now you have the repository locally! Follow along with the commands introduced and make changes to the code as requested throughout the remainder of the course.
 
 ---
 
