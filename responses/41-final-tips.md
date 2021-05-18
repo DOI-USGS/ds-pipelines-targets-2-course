@@ -7,6 +7,39 @@ First, you may have seen a folder called `_targets` :file_folder: created after 
 
 We encourage excessive commenting of code! It is so important to explain what you are doing and why you are doing it, especially when you come up with a really clever line of code :bulb:. With `targets`, any commented lines of code (ones beginning with `#`) you add to your functions will not be seen as a change to the file and will not trigger a rebuild of targets. So comment away freely, regardless of whether it's before or after you've written and run a function!
 
+Final tip, although a `targets` pipeline is written and executed in R, you can still call functions from another computing language or even invoke system commands :sunglasses:. For example, maybe you need to read in a NumPy file that was written from a Python workflow :snake:. You can use `reticulate` and `targets` to read in this file like so: 
+```
+np <- reticulate::import('numpy')
+
+p1_targets_list = list(
+  ...
+  tar_target(p1_obs_data_npy, '1_data/in/obs_data.npy', format='file'),
+  tar_target(
+    p1_obs_data,
+    np$load(p1_obs_data_npy)
+  )
+)
+```
+Or maybe you wrote your own custom Python function and you want to use it in your `targets` pipeline. Great! Just import your function(s) and use them in your pipeline:  
+```
+# import custom Python functions 
+prep_data_py = reticulate::import_from_path(module = 'prep_data', path = '2_model_prep/src/')
+
+p2_targets_list = list(
+  ...
+  tar_target(
+    p2_data_munged_npz,
+    prep_data_py$prep_data(
+      obs_file = p1_obs_data_npy,
+      locations = p2_config[['model_loc']],
+      start_model = p2_config[['start']],
+      stop_model = p2_config[['stop']]),
+    format = 'file'
+  )
+)
+
+```
+
 ---
 
 `targets` is part of the rOpenSci community of packages and is being used by a wide net of R users. If you have further questions, you can always consult a Data Science colleague, but also try Google and take advantage of the extensive documentation available in the [`targets` R Package User Manual](https://books.ropensci.org/targets/).
