@@ -20,7 +20,7 @@ p1_targets_list = list(
   )
 )
 ```
-Or maybe you wrote your own custom Python function and you want to use it in your `targets` pipeline. Great! Just import your function(s) and use in the pipeline:  
+Or maybe you wrote your own custom Python function and you want to use it in your `targets` pipeline. Great! Just import your function(s) and use them in your pipeline:  
 ```
 # import custom Python functions 
 prep_data_py = reticulate::import_from_path(module = 'prep_data', path = '2_model_prep/src/')
