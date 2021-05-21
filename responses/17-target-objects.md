@@ -43,7 +43,7 @@ Objects used in the command for `tar_target()` need to be created somewhere befo
 
 ---
 
-Another example of when this object (rather than target) pattern comes in handy is when we want to _force_ a target to rebuild. 
+Another example of when this object (rather than target) pattern comes in handy is when we want to _force_ a target to rebuild. Note that in the example below, we are writing the `command` for this target by putting two lines of code between `{}` rather than calling a separate custom function. You can do this for any target, but it is especially useful in this application when we just have two lines of code to execute.
 
 ```r
 library(targets)
