@@ -34,7 +34,7 @@ In the case of fixed arguments, changing the argument names, values, _or even th
 
 ---
 
-:keyboard: using `tar_vistnetwork()` and `tar_outdated()` can reveal unexpected connections between the target and the various dependencies. Comment on some of the different information you'd get from `tar_visnetwork()` that wouldn't be available in the output produced by `tar_glimpse()` or `tar_manifest()`.
+:keyboard: using `tar_visnetwork()` and `tar_outdated()` can reveal unexpected connections between the target and the various dependencies. Comment on some of the different information you'd get from `tar_visnetwork()` that wouldn't be available in the output produced by `tar_glimpse()` or `tar_manifest()`.
 
 <hr>
 <h3 align="center">I'll sit patiently until you comment</h3>
