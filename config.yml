@@ -206,12 +206,18 @@ steps:
   - title: Understanding USGS Data Science conventions and best practices
     description: Learn about some of the unique ways USGS DS likes to build their pipelines
     link: '{{ store.target_conventions_url }}'
-    event: issue_comment.created
+    event: pull_request.closed
     actions:
       - type: respond
-        with: 41-final-tips.md
+        with: zz-goto-next-issue.md
+      - type: createIssue
+        title: Final tips
+        body: 41-final-tips.md
         store:
           final_tips_url: '{{ result.data.html_url }}'
+          final_tips_id: '{{ result.data.number }}'
+      - type: closeIssue
+        issue: '{{ store.target_conventions_id }}'  
   - title: Final tips for being a smart pipeliner
     description: A few final notes about how to be strategic with your pipelines
     link: '{{ store.final_tips_url }}'
