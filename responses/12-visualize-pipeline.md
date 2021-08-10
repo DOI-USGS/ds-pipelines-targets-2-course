@@ -58,7 +58,7 @@ Two file targets (`nwis_01427207_data_csv` and `nwis_01435000_data_csv`) were ad
 
 #### tar_glimpse()
 
-The `targets` package has a nice function called `tar_glimpse()` that we haven't covered yet. It produces a dependency diagram for the target(s) you pass to the `allow` argument (it will show all of them by default). For this _modified_ makefile, calling that function with the default arguments produces:
+The `targets` package has a nice function called `tar_glimpse()` that we haven't covered yet (if you get an error when you try to use it, run `install.packages("visNetwork")` and then try again). It produces a dependency diagram for the target(s) you pass to the `allow` argument (it will show all of them by default). For this _modified_ makefile, calling that function with the default arguments produces:
 ```r
 targets::tar_glimpse()
 ```

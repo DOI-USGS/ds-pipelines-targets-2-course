@@ -6,7 +6,7 @@ We've put some fragile elements in the pipeline that will be addressed later, bu
 
 #### Which targets are incomplete/outdated?
 
-The output of `tar_visnetwork()` after running `tar_make('site_data_styled')` (and having never run `tar_make()`) looks like this:
+The output of `tar_visnetwork()` after running `tar_make('site_data_styled')` (and having never built all targets by running `tar_make()` with no inputs) looks like this:
 ![visnetwork](https://user-images.githubusercontent.com/13220910/115301367-b3a9a200-a126-11eb-95da-f31f0f8f3d56.png)
 
 Only the colors have changed from the last example, signifying that the darker targets are "complete", but that `figure_1_png` and the two `data.csv` files still don't exist. 

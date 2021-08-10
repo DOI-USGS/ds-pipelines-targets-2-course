@@ -30,7 +30,7 @@ While this solution would work, it is less than ideal because it doesn't scale w
 
 Lucky for us, the `targets` package can handle having a directory as a target. If you add a target for a directory, the pipeline will track changes to the directory and will rebuild if it detects changes to the contents a file, the name of a file, or the number of files in the directory changes. 
 
-To track changes to a directory, add the directory as a file target (see the `in_dir` target below). Important - you must add `format = "file"`! Then, you can use that directory as input to other functions. Note that you'd also need to modify your `combine_into_df` function to use `dir(work_dir)` to generate the file names since `in_dir` is just the name of the directory. 
+To track changes to a directory, add the directory as a file target (see the `in_dir` target below). Important - you must add `format = "file"`! Then, you can use that directory as input to other functions. Note that you'd also need to modify your `combine_into_df` function to use `dir(in_dir)` to generate the file names since `in_dir` is just the name of the directory. 
 ```r
 library(targets)
 source("combine_files.R")
