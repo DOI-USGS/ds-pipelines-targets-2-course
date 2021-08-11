@@ -1,4 +1,4 @@
-### How (not to) depend on a directory for changes
+### How to depend on a directory for changes
 
 You might have a project where there is a directory :file_folder: with a collection of files. To simplify the example, assume all of the files are `.csv` and have the same format. As part of the hypothetical project goals, these files need to be combined and formatted into a single plottable data.frame. 
 
