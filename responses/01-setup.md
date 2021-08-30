@@ -1,6 +1,6 @@
 ### Set up your local environment before continuing
 
-During the course, we will ask you to build the pipeline, explore how to troubleshoot, and implement some of the best practices your are learning. To do this, you will work with the pipeline locally and commit/push your changes to GitHub for review. 
+During the course, we will ask you to build the pipeline, explore how to troubleshoot, and implement some of the best practices you are learning. To do this, you will work with the pipeline locally and commit/push your changes to GitHub for review. 
 
 See details below for how to get started working with code and files that exist within the course repsository:
 
