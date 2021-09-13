@@ -21,8 +21,8 @@ p1_targets_list <- list(
     format = "file"
   ),
   tar_target(
-    nwis_01435000_data_csv,
-    download_nwis_site_data('1_fetch/out/nwis_01435000_data.csv'),
+    nwis_01432160_data_csv,
+    download_nwis_site_data('1_fetch/out/nwis_01432160_data.csv'),
     format = "file"
   )
 )
@@ -52,7 +52,7 @@ p3_targets_list <- list(
 
 ```
 
-Two file targets (`nwis_01427207_data_csv` and `nwis_01435000_data_csv`) were added to this makefile, but there were no changes to the functions, since `download_nwis_site_data()` already exists and is used to create a single file that contains water monitoring information for a single site. 
+Two file targets (`nwis_01427207_data_csv` and `nwis_01432160_data_csv`) were added to this makefile, but there were no changes to the functions, since `download_nwis_site_data()` already exists and is used to create a single file that contains water monitoring information for a single site. 
 
 ---
 
@@ -62,7 +62,7 @@ The `targets` package has a nice function called `tar_glimpse()` that we haven't
 ```r
 targets::tar_glimpse()
 ```
-![glimpse_diagram](https://user-images.githubusercontent.com/13220910/115287075-74bf2080-a115-11eb-87d0-36107599ff2f.png)
+![glimpse_diagram](https://user-images.githubusercontent.com/13220910/133107103-47735575-9f40-427e-b66c-32ba32102d91.png)
 
 If you run the same command, you'll see something similar but the two new files won't be included. 
 
@@ -85,7 +85,7 @@ tar_manifest()
   name                  command                                                                            pattern
   <chr>                 <chr>                                                                              <chr>  
 1 site_data             "download_nwis_data()"                                                             NA     
-2 nwis_01435000_data_c~ "download_nwis_site_data(\"1_fetch/out/nwis_01435000_data.csv\")"                  NA     
+2 nwis_01432160_data_c~ "download_nwis_site_data(\"1_fetch/out/nwis_01432160_data.csv\")"                  NA     
 3 nwis_01427207_data_c~ "download_nwis_site_data(\"1_fetch/out/nwis_01427207_data.csv\")"                  NA     
 4 site_data_clean       "process_data(site_data)"                                                          NA     
 5 site_info_csv         "nwis_site_info(fileout = \"1_fetch/out/site_info.csv\",  \\n     site_data)"      NA     

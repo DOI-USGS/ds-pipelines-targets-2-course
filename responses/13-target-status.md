@@ -7,7 +7,7 @@ We've put some fragile elements in the pipeline that will be addressed later, bu
 #### Which targets are incomplete/outdated?
 
 The output of `tar_visnetwork()` after running `tar_make('site_data_styled')` (and having never built all targets by running `tar_make()` with no inputs) looks like this:
-![visnetwork](https://user-images.githubusercontent.com/13220910/115301367-b3a9a200-a126-11eb-95da-f31f0f8f3d56.png)
+![visnetwork](https://user-images.githubusercontent.com/13220910/133108278-d1095b74-b810-49a2-bdfb-310598e07c8b.png)
 
 Only the colors have changed from the last example, signifying that the darker targets are "complete", but that `figure_1_png` and the two `data.csv` files still don't exist. 
 
@@ -15,7 +15,7 @@ The `targets` package has a useful function called `tar_outdated()` which will l
 
 ```r
 tar_outdated()
-[1] "nwis_01435000_data_csv" "nwis_01427207_data_csv" "figure_1_png"                
+[1] "nwis_01432160_data_csv" "nwis_01427207_data_csv" "figure_1_png"                
 ```
 This output tells us the same thing as the visual, namely that these three targets :point_up: are incomplete/outdated.
 
