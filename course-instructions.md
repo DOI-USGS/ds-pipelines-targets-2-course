@@ -73,7 +73,7 @@ In this course, we're going to go one by one through a series of tips that will 
 <hr>
 
 <details>
-<summary><h2>How to debug a pipeline: Inspecting parts of the pipeline and variables within functions</h2></summary>
+<summary><h2>tmp</h2></summary>
 
 If you've written your own functions or scripts before, you may have run into the red breakpoint dot :red_circle: on the left side of your script window:
 
