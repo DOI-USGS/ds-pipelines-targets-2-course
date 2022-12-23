@@ -53,7 +53,7 @@ You can also open this project in RStudio by double-clicking the .Rproj file in 
 ---
 
 
-<summary><h2>Gotchas</h2></summary>
+### Gotchas Overview
 
 In this course, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
 
@@ -70,11 +70,9 @@ In this course, we're going to go one by one through a series of tips that will 
 
 </details>
 
-<details>
-
 <hr>
 
-<summary><h2>How to debug a pipeline: Inspecting parts of the pipeline and variables within functions</h2></summary>
+<details><summary><h2>How to debug a pipeline: Inspecting parts of the pipeline and variables within functions</h2></summary>
 
 If you've written your own functions or scripts before, you may have run into the red breakpoint dot :red_circle: on the left side of your script window:
 
@@ -104,11 +102,11 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 
 :keyboard: Place a `browser()` in the `for` loop of the `download_nwis_data()` function. Build the pipeline and compare the size of `data_out` through each iteration of the loop using the debugger navigational features. When you are done, don't forget to remove the `browser()` command from that function and then save the R script. Then, comment here on where you think you might find `browser()` handy in future pipelines. 
 
+</details>
+
 <hr>
 
-### 12 visualize pipeline
-
-### Visualizing and understanding the status of dependencies in a pipeline
+<details><summary><h2>Visualizing and understanding the status of dependencies in a pipeline</h2></summary>
 
 Seeing the structure of a pipeline as a visual is powerful. Viewing connections between targets and the direction data is flowing in can help you better understand the role of pipelines in data science work. Once you are more familiar with pipelines, using the same visuals can help you diagnose problems. 
 
@@ -208,10 +206,9 @@ tar_manifest()
 
 :keyboard: comment on what you learned from exploring `tar_glimpse()` and `tar_manifest()`.
 
+</details>
+
 <hr>
-<h3 align="center">I'll sit patiently until you comment</h3>
-
-
 
 ### 13 targets status
 
