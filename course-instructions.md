@@ -211,9 +211,7 @@ tar_manifest()
 
 <hr>
 
-### 13 targets status
-
-### Using tar_visnetwork() and tar_outdated() to explore status of pipeline targets
+<details><summary><h2>Using tar_visnetwork() and tar_outdated() to explore status of pipeline targets</h2></summary>
 
 In the image contained within the previous comment, all of the shapes are circles of the same color. `tar_glimpse()` is useful to verify your pipeline connections, but once you start building your pipeline `tar_visnetwork()` creates a dependency diagram with more information and styles the shapes in ways to signify which targets are out of date or don't need to rebuild. 
 
@@ -251,13 +249,11 @@ In the case of fixed arguments, changing the argument names, values, _or even th
 
 :keyboard: using `tar_visnetwork()` and `tar_outdated()` can reveal unexpected connections between the target and the various dependencies. Comment on some of the different information you'd get from `tar_visnetwork()` that wouldn't be available in the output produced by `tar_glimpse()` or `tar_manifest()`.
 
+</details>
+
 <hr>
-<h3 align="center">I'll sit patiently until you comment</h3>
 
-
-## 14 cyclical depends
-
-### What are cyclical dependencies and how to avoid them?
+<details><summary><h2>What are cyclical dependencies and how to avoid them?</h2></summary>
 
 Using `tar_visnetwork()` shows the dependency diagram of the pipeline. Look at previous comments to remind yourself of these visuals. 
 
@@ -271,8 +267,10 @@ This potentially infinite loop is confusing to think about and is also something
 
 :keyboard: Add a comment when you are ready to move on.  
 
+</details>
+
 <hr>
-<h3 align="center">I'll sit patiently until you comment</h3>
+
 
 
 ## 15 undoc files
