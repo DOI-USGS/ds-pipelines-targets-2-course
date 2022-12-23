@@ -1,13 +1,14 @@
-## 00 Overview
+<details>
+<summary><h2>Overview</h2></summary>
 
-**Welcome to the second installment of "introduction to data pipelines"** at USGS, @{{ user.username }}!! :sparkles:
+**Welcome to the second installment of "introduction to data pipelines"** at USGS!! :sparkles:
 
-We're assuming you were able to navigate through the [intro-to-targets-pipelines](https://lab.github.com/USGS-R/intro-to-targets-pipelines) course and that you learned a few things about organizing your code for readability, re-use, and collaboration. You were also introduced to two key things through the makefile: a way to program connections between functions, files, and phases and the concept of a dependency manager that skips parts of the workflow that don't need to be re-run. 
+We're assuming you were able to navigate through the [intro-to-targets-pipelines](https://github.com/padilla410/ds-pipelines-targets-2course-static) course and that you learned a few things about organizing your code for readability, re-use, and collaboration. You were also introduced to two key things through the makefile: a way to program connections between functions, files, and phases and the concept of a dependency manager that skips parts of the workflow that don't need to be re-run. 
 
 ---
 ### Recap of pipelines I
 
-First, a recap of key concepts that came from [intro-to-targets-pipelines](https://lab.github.com/USGS-R/intro-to-targets-pipelines) :point_down:
+First, a recap of key concepts that came from [intro-to-targets-pipelines](https://github.com/padilla410/ds-pipelines-targets-2course-static) :point_down:
 - Data science work should be organized thoughtfully. As Jenny Bryan notes, "File organization and naming are powerful weapons against chaos".
 - Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect outputs from these functions ("targets") to generate your final product.
@@ -27,6 +28,8 @@ As with pipelines I, please invite a few collaborators to your repository so the
 ![add some friends](https://user-images.githubusercontent.com/2349007/81471981-c0094900-91ba-11ea-93b0-0ffd31ec4ea9.png)
 
 :bulb: Tip: Throughout this course, I, the Learning Lab Bot, will reply and direct you to the next step each time you complete an activity. But sometimes I'm _too_ fast when I :hourglass_flowing_sand: give you a reply, and occasionally you'll need to refresh the current GitHub page to see it. Please be patient, and let my human (your designated course instructor) know if I seem to have become completely stuck.
+
+</details>
 
 <hr>
 
