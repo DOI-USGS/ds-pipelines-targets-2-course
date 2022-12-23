@@ -29,11 +29,7 @@ As with pipelines I, please invite a few collaborators to your repository so the
 
 :bulb: Tip: Throughout this course, I, the Learning Lab Bot, will reply and direct you to the next step each time you complete an activity. But sometimes I'm _too_ fast when I :hourglass_flowing_sand: give you a reply, and occasionally you'll need to refresh the current GitHub page to see it. Please be patient, and let my human (your designated course instructor) know if I seem to have become completely stuck.
 
-</details>
-
 <hr>
-
-## 01 Set up
 
 ### Set up your local environment before continuing
 
@@ -46,7 +42,7 @@ See details below for how to get started working with code and files that exist 
 Open a git bash shell (Windows:diamond_shape_with_a_dot_inside:) or a terminal window (Mac:green_apple:) and change (`cd`) into the directory you work in for projects in R (for me, this is `~/Documents/R`). There, clone the repository and set your working directory to the new project folder that was created:
 
 ```
-git clone git@github.com:<username>/ds-pipelines-targets-2-course-static.git
+git clone git@github.com:<your-username-here>/ds-pipelines-targets-2-course-static.git
 cd ds-pipelines-targets-2
 ```
 
@@ -56,9 +52,8 @@ You can also open this project in RStudio by double-clicking the .Rproj file in 
 
 ---
 
-:keyboard: close this issue to continue!
 
-## 10 gotchas
+<summary><h2>Gotchas</h2></summary>
 
 In this course, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
 
@@ -73,14 +68,13 @@ In this course, we're going to go one by one through a series of tips that will 
 - :gear: USGS Data Science naming conventions
 - :unlock: Final tips for smart pipelining
 
+</details>
 
+<details>
 
 <hr>
 
-
-## 11 targets debug
-
-### How to inspect parts of the pipeline and variables within functions
+<summary><h2>How to debug a pipeline: Inspecting parts of the pipeline and variables within functions</h2></summary>
 
 If you've written your own functions or scripts before, you may have run into the red breakpoint dot :red_circle: on the left side of your script window:
 
@@ -111,7 +105,6 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 :keyboard: Place a `browser()` in the `for` loop of the `download_nwis_data()` function. Build the pipeline and compare the size of `data_out` through each iteration of the loop using the debugger navigational features. When you are done, don't forget to remove the `browser()` command from that function and then save the R script. Then, comment here on where you think you might find `browser()` handy in future pipelines. 
 
 <hr>
-<h3 align="center">I'll sit patiently until you comment</h3>
 
 ### 12 visualize pipeline
 
