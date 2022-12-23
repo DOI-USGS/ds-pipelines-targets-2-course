@@ -105,6 +105,7 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 
 </details>
 
+
 <hr>
 
 <details><summary><h2>Visualizing and understanding the status of dependencies in a pipeline</h2></summary>
