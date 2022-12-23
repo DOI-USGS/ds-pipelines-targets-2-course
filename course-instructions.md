@@ -29,8 +29,6 @@ As with pipelines I, please invite a few collaborators to your repository so the
 :bulb: Tip: Throughout this course, I, the Learning Lab Bot, will reply and direct you to the next step each time you complete an activity. But sometimes I'm _too_ fast when I :hourglass_flowing_sand: give you a reply, and occasionally you'll need to refresh the current GitHub page to see it. Please be patient, and let my human (your designated course instructor) know if I seem to have become completely stuck.
 
 <hr>
-<h3 align="center">I'll sit patiently until you've closed the issue.</h3>
-
 
 ## 01 Set up
 
@@ -45,7 +43,7 @@ See details below for how to get started working with code and files that exist 
 Open a git bash shell (Windows:diamond_shape_with_a_dot_inside:) or a terminal window (Mac:green_apple:) and change (`cd`) into the directory you work in for projects in R (for me, this is `~/Documents/R`). There, clone the repository and set your working directory to the new project folder that was created:
 
 ```
-git clone git@github.com:{{ user.username }}/{{ repo }}.git
+git clone git@github.com:<username>/ds-pipelines-targets-2-course-static.git
 cd ds-pipelines-targets-2
 ```
 
@@ -59,7 +57,7 @@ You can also open this project in RStudio by double-clicking the .Rproj file in 
 
 ## 10 gotchas
 
-In this section, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
+In this course, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
 
 
 - :mag: How to debug in a pipeline
@@ -73,10 +71,9 @@ In this section, we're going to go one by one through a series of tips that will
 - :unlock: Final tips for smart pipelining
 
 
-:keyboard: add a comment to this issue and the bot will respond with the next topic
 
 <hr>
-<h3 align="center">I'll sit patiently until you comment</h3>
+
 
 ## 11 targets debug
 
@@ -570,7 +567,7 @@ Within the course repo you should see only a `_targets.R` and directories with c
 
 When you are happy with your newer, better workflow, create a pull request with your changes and assign your designated course instructor as a reviewer. Add a comment to your own PR with thoughts on how you approached the task, as well as key decisions you made.
 
-Recall that you should not be committing any build artifacts of the pipeline to GitHub, so make sure that your `*/out/*` folders are included in your `.gitignore` file.
+Recall that you should not be committing any build artifacts of the pipeline to GitHub, so make sure that your `*/out/*` and `_targets/*` folders are included in your `.gitignore` file.
 
 You should create a local branch called "refactor-targets" and push that branch up to the "remote" location (which is the github host of your repository). We're naming this branch "refactor-targets" to represent concepts in this section of the lab. In the future you'll probably choose branch names according to the type of work they contain - for example, `"pull-oxygen-data"` or `"fix-issue-17"`.
 
