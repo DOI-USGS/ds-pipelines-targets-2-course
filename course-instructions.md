@@ -50,8 +50,9 @@ You can also open this project in RStudio by double-clicking the .Rproj file in 
 
 :star: Now you have the repository locally! Follow along with the commands introduced and make changes to the code as requested throughout the remainder of the course.
 
----
 </details>
+
+<hr> 
 
 <summary><h2>How to get past the gotchas without getting gotten again</h2></summary>
 
