@@ -15,19 +15,17 @@ First, a recap of key concepts that came from [intro-to-targets-pipelines](https
 - "Skip the work you don't need" by taking advantage of a dependency manager. There was a video that covered a bit of `make`, and you were asked to experiment with `targets`.
 - Invest in _efficient_ reproducibility to scale up projects with confidence. 
 
-This last concept was not addressed directly, but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthly steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
+This last concept was not addressed directly, but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthy steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
 
 ### What's ahead in pipelines II
 
 In this training, the focus will be on conventions and best practices for making better, smarter pipelines for USGS Data Science projects. You'll learn new things here that will help you refine your knowledge from the first class and put it into practice. Let's get started!
 
 
-:keyboard: Activity: Add collaborators and close this issue to get started.
+:keyboard: Activity: Add collaborators to get started.
 
-As with pipelines I, please invite a few collaborators to your repository so they can easily comment and review in the future. In the :gear: Settings widget at the top of your repo, select "Manage access" (or use [this shortcut link]({{ repoUrl }}/settings/access)). Go ahead and invite your course instructor. It should look something like this: 
+As with pipelines I, please invite a few collaborators to your repository so they can easily comment and review in the future. In the :gear: Settings widget at the top of your repo, select "Manage access". Go ahead and invite your course instructor. It should look something like this: 
 ![add some friends](https://user-images.githubusercontent.com/2349007/81471981-c0094900-91ba-11ea-93b0-0ffd31ec4ea9.png)
-
-:bulb: Tip: Throughout this course, I, the Learning Lab Bot, will reply and direct you to the next step each time you complete an activity. But sometimes I'm _too_ fast when I :hourglass_flowing_sand: give you a reply, and occasionally you'll need to refresh the current GitHub page to see it. Please be patient, and let my human (your designated course instructor) know if I seem to have become completely stuck.
 
 <hr>
 
@@ -57,7 +55,6 @@ You can also open this project in RStudio by double-clicking the .Rproj file in 
 <details><summary><h2>How to get past the gotchas without getting gotten again</h2></summary>
 
 In this course, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
-
 
 - :mag: How to debug in a pipeline
 - :eyes: Visualizing and understanding the status of dependencies in a pipeline
@@ -99,7 +96,7 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 
 ---
 
-:keyboard: Place a `browser()` in the `for` loop of the `download_nwis_data()` function. Build the pipeline and compare the size of `data_out` through each iteration of the loop using the debugger navigational features. When you are done, don't forget to remove the `browser()` command from that function and then save the R script. Then, comment here on where you think you might find `browser()` handy in future pipelines. 
+:keyboard: Place a `browser()` in the `for` loop of the `download_nwis_data()` function. Build the pipeline and compare the size of `data_out` through each iteration of the loop using the debugger navigational features. When you are done, don't forget to remove the `browser()` command from that function and then save the R script. Then, consider where you think you might find `browser()` handy in future pipelines. 
 
 <hr>
 
@@ -173,7 +170,7 @@ If you run the same command, you'll see something similar but the two new files 
 
 ---
 
-Seeing this diagram helps develop a greater understanding of some of the earlier concepts from [intro-to-targets-pipelines](https://lab.github.com/USGS-R/intro-to-targets-pipelines). Here, you can clearly see the connection between `site_data` and `figure_1_png`. The figure_1 plot _needs_ all of the previous steps to have run in order to build. The arrows communicate the connections (or "dependencies") between targets, and if a target doesn't have any arrows connected to it, it isn't depended _on_ by another target and it doesn't depend _on_ any another targets. The two new .csv files are both examples of this, and in the image above they are floating around with no connections. A floater target like these two will still be built by `tar_make()` if they are included in the final target list (e.g., here they appear in `p1_targets_list` which is included in the final target list returned at the end of `_targets.R`)
+Seeing this diagram helps develop a greater understanding of some of the earlier concepts from [intro-to-targets-pipelines](https://github.com/padilla410/intro-to-targets-pipelines). Here, you can clearly see the connection between `site_data` and `figure_1_png`. The figure_1 plot _needs_ all of the previous steps to have run in order to build. The arrows communicate the connections (or "dependencies") between targets, and if a target doesn't have any arrows connected to it, it isn't depended _on_ by another target and it doesn't depend _on_ any another targets. The two new .csv files are both examples of this, and in the image above they are floating around with no connections. A floater target like these two will still be built by `tar_make()` if they are included in the final target list (e.g., here they appear in `p1_targets_list` which is included in the final target list returned at the end of `_targets.R`)
 
 The diagram also shows how the inputs of one function create connections to the output of that function. `site_data` is used to build `site_data_clean` (and is the only input to that function) and it is also used as an input to `"1_fetch/out/site_info.csv"`, since the `nwis_site_info()` function needs to know what sites to get information from. These relationships result in a split in the dependency diagram where `site_data` is directly depended on by two other targets. 
 
@@ -520,7 +517,7 @@ Within the course repo you should see only a `_targets.R` and directories with c
 
 When you are happy with your newer, better workflow, create a pull request with your changes and assign your designated course instructor as a reviewer. Add a comment to your own PR with thoughts on how you approached the task, as well as key decisions you made.
 
-Recall that you should not be committing any build artifacts of the pipeline to GitHub, so make sure that your `*/out/*` and `_targets/*` folders are included in your `.gitignore` file.
+Recall that you should not be committing any build artifacts of the pipeline to GitHub, so make sure that your `*/out/*` folders are included in your `.gitignore` file.
 
 You should create a local branch called "refactor-targets" and push that branch up to the "remote" location (which is the github host of your repository). We're naming this branch "refactor-targets" to represent concepts in this section of the lab. In the future you'll probably choose branch names according to the type of work they contain - for example, `"pull-oxygen-data"` or `"fix-issue-17"`.
 
