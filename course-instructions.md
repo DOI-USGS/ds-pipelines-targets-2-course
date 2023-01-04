@@ -558,9 +558,9 @@ These objects are often used because they offer a brevity advantage over files (
 
 The "illusion" :tophat::rabbit: of objects not taking up space is because behind the scenes, these objects are actually written to file (.rds files, to be specific). You can see what exists under the hood with `dir('_targets/objects')`. The default is for `targets` to store these as `.rds` files. There are other formats that can be used to store the intermediate objects; if you're curious, check out the documentation for the `format` argument to `tar_target()`.
 
-You can take a look at that same object referenced in {{ repoUrl }}/issues/{{ store.many_targets_id }} by using
+You can take a look at that same object referenced earlier in "Strategies for defining targets in data pipelines" by using
 ```r
-readRDS('_targets/objects/map.config')
+readRDS('_targets/objects/map_config')
 $missing_data
 [1] "grey90"
 
