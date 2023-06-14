@@ -758,3 +758,5 @@ You are awesome! :star2: :collision: :tropical_fish:
 ---
 
 We hope you've learned a lot in intro to pipelines II. We don't have additional exercises in this module, but we'd love to have a discussion if you have questions. 
+
+When you're ready, move on to [pipelines III](https://github.com/DOI-USGS/ds-pipelines-targets-3-course).
