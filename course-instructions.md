@@ -78,7 +78,7 @@ Breakpoints allow you to run a function (or script) up until the line of the bre
 
 In `targets`, you can't set a breakpoint in the "normal" way, which would be clicking on the line number after you sourced the script. Instead, you need to use the other method for debugging in R, which requires adding the function call `browser()` to the line where you'd like the function call to stop and specifying an additional argument when you call `tar_make()`. 
 
-:warning: Check your RStudio version (go to the Help menu and click About RStudio). If you have a version earlier than v1.3.5, you may want to consider [updating RStudio](https://www.rstudio.com/products/rstudio/download/#download) before proceeding to have the smoothest experience in debugging mode. :warning:
+:warning: Check your RStudio version (go to the Help menu and click About RStudio). If you have a version earlier than v2023.06.0+421, you may want to consider [updating RStudio](https://www.rstudio.com/products/rstudio/download/#download) before proceeding to have the smoothest experience in debugging mode. :warning:
 
 ---
 
