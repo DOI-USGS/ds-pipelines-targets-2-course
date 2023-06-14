@@ -1,4 +1,4 @@
-<details>
+<details open>
 <summary><h2>Overview</h2></summary>
 
 **Welcome to the second installment of "introduction to data pipelines"** at USGS!! :sparkles:
