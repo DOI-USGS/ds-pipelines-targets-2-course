@@ -8,7 +8,7 @@ We're assuming you were able to navigate through the [intro-to-targets-pipelines
 ---
 ### Recap of pipelines I
 
-First, a recap of key concepts that came from [intro-to-targets-pipelines](https://github.com/padilla410/ds-pipelines-targets-2course-static) :point_down:
+First, a recap of key concepts that came from [intro-to-targets-pipelines](https://github.com/DOI-USGS/ds-pipelines-targets-1-course) :point_down:
 - Data science work should be organized thoughtfully. As Jenny Bryan notes, "File organization and naming are powerful weapons against chaos".
 - Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect outputs from these functions ("targets") to generate your final product.
