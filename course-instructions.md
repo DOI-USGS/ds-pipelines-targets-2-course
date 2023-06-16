@@ -12,7 +12,7 @@ First, a recap of key concepts that came from [intro-to-targets-pipelines](https
 - Data science work should be organized thoughtfully. As Jenny Bryan notes, "File organization and naming are powerful weapons against chaos".
 - Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect outputs from these functions ("targets") to generate your final product.
-- "Skip the work you don't need" by taking advantage of a dependency manager. There was a video that covered a bit of `make`, and you were asked to experiment with `targets`.
+- "Skip the work you don't need" by taking advantage of a dependency manager. You watched a video that summarized the points above and covered a bit of `make`. Then you were asked to experiment with `targets` - a `Make`-like pipeline tool for R.
 - Invest in _efficient_ reproducibility to scale up projects with confidence. 
 
 This last concept was not addressed directly, but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthy steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
