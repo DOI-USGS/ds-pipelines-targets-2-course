@@ -52,21 +52,21 @@ You can open this project in RStudio by double-clicking the .Rproj file in the `
 
 <hr> 
 
-<details><summary><h2>How to get past the gotchas without getting gotten again</h2></summary>
+<details><summary><h2>How to Get Past the Gotchas Without Getting Gotten Again</h2></summary>
 
 In this course, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
 
-- :mag: How to debug in a pipeline
-- :eyes: Visualizing and understanding the status of dependencies in a pipeline
-- :speech_balloon: Using `tar_visnetwork()` and `tar_outdated()` to interrogate the status of a pipeline
-- :arrows_clockwise: What is a cyclical dependency and how do I avoid it?
-- :warning: Understanding undocumented file outputs and side effects 
-- :open_file_folder: Using a directory as a dependency 
-- :question: What to do when you want to specify a non-target input to a command
-- :clipboard: Strategies for defining targets in data pipelines 
-- :dizzy: Learn the differences between different types of targets
-- :gear: USGS Data Science naming conventions
-- :unlock: Final tips for smart pipelining
+- :mag: [How to debug in a pipeline](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#how-to-debug-in-a-pipeline)
+- :eyes: [Visualizing and understanding the status of dependencies in a pipeline](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#visualizing-and-understanding-the-status-of-dependencies-in-a-pipeline)
+- :speech_balloon: [Using `tar_visnetwork()` and `tar_outdated()` to interrogate the status of a pipeline](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#using-tar_visnetwork-and-tar_outdated-to-interrogate-the-status-of-a-pipeline)
+- :arrows_clockwise: [What is a cyclical dependency and how do I avoid it?](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#what-is-a-cyclical-dependency-and-how-do-i-avoid-it)
+- :warning: [Understanding undocumented file outputs and side effects](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#understanding-undocumented-file-outputs-and-side-effects)
+- :open_file_folder: [Using a directory as a dependency](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#using-a-directory-as-a-dependency)
+- :question: [What to do when you want to specify a non-target input to a command](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#what-to-do-when-you-want-to-specify-a-non-target-input-to-a-command)
+- :clipboard: [Strategies for defining targets in data pipelines](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#strategies-for-defining-targets-in-data-pipelines)
+- :dizzy: [Learn the differences between different types of targets](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#learn-the-differences-between-different-types-of-targets)
+- :gear: [USGS Data Science naming conventions](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#usgs-data-science-naming-conventions)
+- :unlock: [Final tips for smart pipelining](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#final-tips-for-smart-pipelining)
 
 </details>
 
@@ -741,7 +741,7 @@ p2_targets_list = list(
 
 <hr>
 
-<details><summary><h2>What's next</h2></summary>
+<details><summary><h2>What's Next</h2></summary>
 
 You are awesome! :star2: :collision: :tropical_fish:
 
