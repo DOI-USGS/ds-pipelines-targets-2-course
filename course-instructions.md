@@ -82,7 +82,7 @@ In `targets`, you can't set a breakpoint in the "normal" way, which would be cli
 
 ---
 
-You have a working, albeit brittle, pipeline in your course repository. You can try it out with `targets::tar_make()`. This pipeline has a number of things you'll work to fix later, but for now, it is a useful reference. The pipeline contains a `_targets.R` file and several functions defined in `.R` files. 
+You have a working, albeit brittle, pipeline in your course repository. You can try it out with `targets::tar_make()`. This pipeline has a number of things you'll work to fix later, but for now, it is a useful reference. The pipeline contains a `_targets.R` makefile and several functions defined in `.R` files. 
 
 So, if you wanted to look at what `download_files` were created within the `download_nwis_data()` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file (make sure to hit save for changes to take effect!). Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
 
@@ -491,7 +491,7 @@ But of course there is a cost to creating many targets: you'll end up typing a l
 
 :keyboard: Activity: Make modifications to the working, but less than ideal, pipeline that exists within your course repository
 
-Within the course repo you should see only a `_targets.R` and directories with code or placeholder files for each phase. You should be able to run `tar_make()` and build the pipeline, although it may take numerous tries, since some parts of this new workflow are brittle. Some hints to get you started: the `site_data` target is too big, and you should consider splitting it into a target for each site, perhaps using the `download_nwis_site_data()` function directly to write a file. Several of the `site_data_` targets are too small and it might make sense to combine them.
+Within the course repo you should see only a `_targets.R` makefile and directories with code or placeholder files for each phase. You should be able to run `tar_make()` and build the pipeline, although it may take numerous tries, since some parts of this new workflow are brittle. Some hints to get you started: the `site_data` target is too big, and you should consider splitting it into a target for each site, perhaps using the `download_nwis_site_data()` function directly to write a file. Several of the `site_data_` targets are too small and it might make sense to combine them.
 
 ---
 
@@ -570,7 +570,7 @@ File targets are very flexible and, of course, are also easy to share or store e
 
 Additionally, many file formats are either language agnostic (e.g., csv, tsv, txt, nc files) _or_ are meant to be shared across languages, such as the [feather format](https://blog.rstudio.com/2016/03/29/feather/) designed for exchange between R and Python.
 
-When specifying a file target in a makefile, the path to the file needs to be either absolute or relative to the working directory that the `_targets.R` file is in. 
+When specifying a file target in a makefile, the path to the file needs to be either absolute or relative to the working directory that the `_targets.R` makefile is in. 
 
 ---
 
