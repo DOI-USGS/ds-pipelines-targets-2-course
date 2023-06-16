@@ -314,8 +314,13 @@ To track changes to a directory, add the directory as a file target (see the `in
 
 ![example file targets](archive/img/example-directory-target-2.png)
 
+By experimenting with this type of target, we identified a few caveats that you may want to consider by for using a directory as a file target:
+
+Based on experiments that we've run, we have found that using a directory as a file target generally works best when the files you are tracking exist _before_ the pipeline is run or when the files you are tracking only change _between_ pipeline runs. For example, a directory target can be useful if you are working with data files that a collaborator manually turns over to you. However, you would not want to use a directory target if you pipeline dynamically downloads data and saves files. Through a series of experiments, we have found that the pipeline does not consistently or predictably capture and track these dynamically downloaded files.
 
 Yay! :star2: This works because a change to any one of the files (or an addition/deletion of a file) in `1_fetch/in` will result in a rebuild of `in_dir`, which would cause a rebuild of `plot_data`. 
+
+If you choose to build a pipeline that depends on a directory, we recommend t
 
 <hr>
 
