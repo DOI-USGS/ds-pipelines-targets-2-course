@@ -465,15 +465,17 @@ This makefile recipe generates a multipanel map, which colors [HUC8 watersheds](
 
 ---
 
-The `"figures/multi_panel_constituents.png"` figure takes around to three minutes to plot. For some, a three minute build could be considered "expensive" because that delay could make it challenging to iterate on style, size, colors, and layout without distraction.
+One key consideration when defining separate targets in a pipeline is "how long does it take to build each target?"
 
-But, when compared to other targets in the pipeline
+For example, the `"figures/multi_panel_constituents.png"` figure defined above takes around to three minutes to plot. For some, a three minute build could be considered "expensive" because that delay could make it challenging to iterate on style, size, colors, and layout without distraction.
 
-, so it is a somewhat "expensive" target to iterate on when it comes to style, size, colors, and layout (it takes 3 minutes to plot for me). But the plotting expense is dwarfed by the amount of time it takes to build each water quality data "object target", since `get_wqp_data` uses a web service that queries a large database and returns a result; the process of fetching the data can sometimes take over thirty minutes (`nitrogen_all` is a target that contains the locations of all of the sites that have nitrogen water quality data samples). 
+However, when compared to other targets in the same pipeline, building `"figures/multi_panel_constituents.png"` _is not_ expensive. The plotting expense is dwarfed by the amount of time it takes to build each water quality data "object target" upstream of the final figure. These water quality targets can sometimes take over thirty minutes to build , since `get_wqp_data` uses a web service that queries a large database and returns a result; the process of fetching the data can sometimes take over thirty minutes (`nitrogen_all` is a target that contains the locations of all of the sites that have nitrogen water quality data samples). 
 
 Alternatively, the `map_config*` object above builds in a fraction of second, and contains some simple information that is used to fetch and process the proper boundaries with the `get_mutate_HUC8s` function, and includes some plotting details for the final map (such as plotting color divisions).
 
-This example, although dated, represents a real project that caused us to think carefully about how many targets we use in a recipe and how complex their underlying functions are. Decisions related to targets are often motivated by the intent of the pipeline. In the case above, our intent at the time was to capture the data and processing behind the plot in the paper in order to satisfy our desire for reproducibility. 
+This example, although dated, represents a real project that caused us to think carefully about how many targets we use in a recipe and how complex their underlying functions are. Decisions related to targets are often motivated by the intent of the pipeline. In the case above, our intent at the time was to capture the data and processing behind the plot in the paper in order to satisfy our desire for reproducibility.
+
+Critically thinking through considerations such as target build times and how to best subdivide the workflows will be an important when you start building your own pipelines.
 
 ---
 
