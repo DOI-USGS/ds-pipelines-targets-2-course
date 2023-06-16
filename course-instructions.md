@@ -84,7 +84,7 @@ In `targets`, you can't set a breakpoint in the "normal" way, which would be cli
 
 You have a working, albeit brittle, pipeline in your course repository. You can try it out with `targets::tar_make()`. This pipeline has a number of things you'll work to fix later, but for now, it is a useful reference. The pipeline contains a `_targets.R` file and several functions defined in `.R` files. 
 
-So, if you wanted to look at what `download_files` were created within the `download_nwis_data()` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file (make sure to hit save for changes to take affect!). Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
+So, if you wanted to look at what `download_files` were created within the `download_nwis_data()` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file (make sure to hit save for changes to take effect!). Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
 
 ![browser()](archive/img/download-fxn-browser.png)
 
@@ -104,7 +104,7 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 
 Seeing the structure of a pipeline as a visual is powerful. Viewing connections between targets and the direction data is flowing in can help you better understand the role of pipelines in data science work. Once you are more familiar with pipelines, using the same visuals can help you diagnose problems. 
 
-Below is a makefile that is very similar to the one you have in your code repository (the option configurations and `source` calls were removed for brevity, but they are unchanged):
+Below is a `_targets.R` file that is very similar to the one you have in your code repository (the library, option configurations, and `source` calls were removed for brevity, but they are unchanged):
 ```r
 
 p1_targets_list <- list(
@@ -119,12 +119,12 @@ p1_targets_list <- list(
   ),
   tar_target(
     nwis_01427207_data_csv,
-    download_nwis_site_data('1_fetch/out/nwis_01427207_data.csv'),
+    download_nwis_site_data(fileout = '1_fetch/out/nwis_01427207_data.csv'),
     format = "file"
   ),
   tar_target(
     nwis_01432160_data_csv,
-    download_nwis_site_data('1_fetch/out/nwis_01432160_data.csv'),
+    download_nwis_site_data(fileout = '1_fetch/out/nwis_01432160_data.csv'),
     format = "file"
   )
 )
@@ -154,13 +154,15 @@ p3_targets_list <- list(
 
 ```
 
-Two file targets (`nwis_01427207_data_csv` and `nwis_01432160_data_csv`) were added to this makefile, but there were no changes to the functions, since `download_nwis_site_data()` already exists and is used to create a single file that contains water monitoring information for a single site. 
+The only difference between your `_targets.R` file and the one above is that two file targets (`nwis_01427207_data_csv` and `nwis_01432160_data_csv`) were added. `download_nwis_site_data()`, the function that is used to create `nwis_01427207_data_csv` and `nwis_01432160_data_csv`, _has not changed_. This point is important because any other targets in the pipeline that call `download_nwis_site_data()`, such as `site_data`, will remain up-to-date and will be skipped when running `tar_make()`.
+
+The functions that are used to create each target (`download_nwis_site_data()`, `style_data`, etc.)  have not been changed. , but there were no changes to the functions, since `download_nwis_site_data()` already exists and is used to create a single file that contains water monitoring information for a single site. 
 
 ---
 
 #### tar_glimpse()
 
-The `targets` package has a nice function called `tar_glimpse()` that we haven't covered yet (if you get an error when you try to use it, run `install.packages("visNetwork")` and then try again). It produces a dependency diagram for the target(s) you pass to the `allow` argument (it will show all of them by default). For this _modified_ makefile, calling that function with the default arguments produces:
+The `targets` package has a nice function called `tar_glimpse()` that we haven't covered yet (if you get an error when you try to use it, run `install.packages("visNetwork")` and then try again). It produces a dependency diagram for the target(s) you pass to the `allow` argument (it will show all of them by default). For this _modified_ `targets.R` file, calling that function with the default arguments produces the following diagram:
 ```r
 targets::tar_glimpse()
 ```
