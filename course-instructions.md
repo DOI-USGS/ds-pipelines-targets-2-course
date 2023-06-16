@@ -212,7 +212,7 @@ tar_manifest()
 
 <hr>
 
-<details><summary><h2>Using `tar_visnetwork()` and `tar_outdated()` to further interrogate the status of pipeline targets</h2></summary>
+<details><summary><h2>Using `tar_visnetwork()` and `tar_outdated()` to interrogate the status of pipeline targets</h2></summary>
 
 In the image contained within the previous comment, all of the shapes are circles of the same color. `tar_glimpse()` is useful to verify your pipeline connections, but once you start building your pipeline `tar_visnetwork()` creates a dependency diagram with more information and styles the shapes in ways to signify which targets are out of date or don't need to rebuild. 
 
