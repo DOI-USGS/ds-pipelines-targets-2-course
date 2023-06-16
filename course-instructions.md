@@ -58,7 +58,7 @@ In this course, we're going to go one by one through a series of tips that will 
 
 - :mag: How to debug in a pipeline
 - :eyes: Visualizing and understanding the status of dependencies in a pipeline
-- :speech_balloon: Using `tar_visnetwork()` and `tar_outdated()` to further interrogate the status of pipeline targets
+- :speech_balloon: Using `tar_visnetwork()` and `tar_outdated()` to interrogate the status of a pipeline
 - :arrows_clockwise: What is a cyclical dependency and how do I avoid it?
 - :warning: Understanding undocumented file outputs and side effects 
 - :open_file_folder: Using a directory as a dependency 
@@ -108,7 +108,7 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 
 <hr>
 
-<details><summary><h2>Visualizing and understanding the status of dependencies in a pipeline</h2></summary>
+<details><summary><h2>Visualizing and Understanding the Status of Dependencies in a Pipeline</h2></summary>
 
 Seeing the structure of a pipeline as a visual is powerful. Viewing connections between targets and the direction data is flowing in can help you better understand the role of pipelines in data science work. Once you are more familiar with pipelines, using the same visuals can help you diagnose problems. 
 
@@ -212,7 +212,7 @@ tar_manifest()
 
 <hr>
 
-<details><summary><h2>Using `tar_visnetwork()` and `tar_outdated()` to interrogate the status of pipeline targets</h2></summary>
+<details><summary><h2>Using `tar_visnetwork()` and `tar_outdated()` to Interrogate the Status of a Pipeline</h2></summary>
 
 In the image contained within the previous comment, all of the shapes are circles of the same color. `tar_glimpse()` is useful to verify your pipeline connections, but once you start building your pipeline `tar_visnetwork()` creates a dependency diagram with more information and styles the shapes in ways to signify which targets are out of date or don't need to rebuild. 
 
@@ -254,7 +254,7 @@ In the case of fixed arguments, changing the argument names, values, _or even th
 
 <hr>
 
-<details><summary><h2>What is a cyclical dependency and how do I avoid it?</h2></summary>
+<details><summary><h2>What is a Cyclical Dependency and How Do I Avoid It?</h2></summary>
 
 Using `tar_visnetwork()` shows the dependency diagram of the pipeline. As a reminder, here is the `tar_visnetwork` diagram for our current pipeline:
 
@@ -272,7 +272,7 @@ This potentially infinite loop is confusing to think about and is also something
 
 <hr>
 
-<details><summary><h2>Understanding undocumented file outputs and side effects</h2></summary>
+<details><summary><h2>Understanding Undocumented File Outputs and Side Effects</h2></summary>
 
 Moving into a pipeline-way-of-thinking can reveal some suprising habits you created when working under a different paradigm. Moving the work of scripts into functions is one thing that helps compartmentalize thinking and organize data and code relationships, but smart pipelines require even more special attention to how functions are designed. 
 
@@ -310,7 +310,7 @@ As a general rule, do not put filepaths in the body of a function. :end:
 
 <hr>
 
-<details><summary><h2>Using a directory as a dependency</h2></summary>
+<details><summary><h2>Using a Directory as a Dependency</h2></summary>
 
 You might have a project where there is a directory :file_folder: with a collection of files. To simplify the example, assume all of the files are `.csv` and have the same format. As part of the hypothetical project goals, these files need to be combined and formatted into a single plottable data.frame. 
 
@@ -340,7 +340,7 @@ Based on experiments that we've run, we have found that using a directory as a f
 
 <hr>
 
-<details><summary><h2>What to do when you want to specify a non-target input to a command</h2></summary>
+<details><summary><h2>What To Do When You Want to Specify a Non-target Input to a Command</h2></summary>
 
 Wow, we've gotten this far and haven't written a function that accepts anything other than an object target or a file target. I feel so constrained!
 
