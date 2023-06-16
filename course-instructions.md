@@ -86,7 +86,7 @@ You have a working, albeit brittle, pipeline in your course repository. You can 
 
 So, if you wanted to look at what `download_files` were created within the `download_nwis_data()` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file (make sure to hit save for changes to take affect!). Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
 
-![browser()](https://user-images.githubusercontent.com/2349007/82158816-bed9bb00-984f-11ea-8892-b2aeb5e4818d.png)
+![browser()](archive/img/download-fxn-browser.png)
 
 There is one more step to get your breakpoint to work in `targets`. You will need to add `callr_function = NULL` to your `tar_make()` call. When you run `tar_make(callr_function = NULL)`, you will land right in the middle of line 8. Give it a try on your own.
 
@@ -164,7 +164,7 @@ The `targets` package has a nice function called `tar_glimpse()` that we haven't
 ```r
 targets::tar_glimpse()
 ```
-![glimpse_diagram](https://user-images.githubusercontent.com/13220910/133107103-47735575-9f40-427e-b66c-32ba32102d91.png)
+![glimpse_diagram](archive/img/tar-glimpse-figure.png)
 
 If you run the same command, you'll see something similar but the two new files won't be included. 
 
@@ -209,7 +209,7 @@ We've put some fragile elements in the pipeline that will be addressed later, bu
 #### Which targets are incomplete/outdated?
 
 The output of `tar_visnetwork()` after running `tar_make('site_data_styled')` (and having never built all targets by running `tar_make()` with no inputs) looks like this:
-![visnetwork](https://user-images.githubusercontent.com/13220910/133108278-d1095b74-b810-49a2-bdfb-310598e07c8b.png)
+![visnetwork](archive/img/updated-visnetwork-figure.png)
 
 Only the colors have changed from the last example, signifying that the darker targets are "complete", but that `figure_1_png` and the two `data.csv` files still don't exist. 
 
@@ -230,7 +230,7 @@ The `figure_1_png` target can become outdated again if there are any modificatio
 tar_visnetwork("3_visualize/out/figure_1.png")
 ```
 
-![visnetwork_fxnchange](https://user-images.githubusercontent.com/13220910/115302212-cd97b480-a127-11eb-9636-930ce7e02cb1.png)
+![visnetwork_fxnchange](archive/img/outdated-visnetwork-figure.png)
 
 In the case of fixed arguments, changing the argument names, values, _or even the order they are specified_ will create a change in the function definition and cause the output target to be considered outdated. Adding comments to the function code does not cause the function to be seen as changed.
 
