@@ -68,6 +68,8 @@ In this course, we're going to go one by one through a series of tips that will 
 - :gear: USGS Data Science naming conventions
 - :unlock: Final tips for smart pipelining
 
+</details>
+
 <hr>
 
 <details><summary><h2>How to Debug in a Pipeline</h2></summary>
