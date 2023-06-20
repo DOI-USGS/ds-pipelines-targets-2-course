@@ -12,7 +12,7 @@ First, a recap of key concepts that came from [intro-to-targets-pipelines](https
 - Data science work should be organized thoughtfully. As Jenny Bryan notes, "File organization and naming are powerful weapons against chaos".
 - Capture all of the critical phases of project work with descriptive directories and function names, including how you "got" the data.
 - Turn your scripts into a collection of functions, and modify your thinking to connect outputs from these functions ("targets") to generate your final product.
-- "Skip the work you don't need" by taking advantage of a dependency manager. There was a video that covered a bit of `make`, and you were asked to experiment with `targets`.
+- "Skip the work you don't need" by taking advantage of a dependency manager. You watched a video that summarized the points above and covered a bit of `make`. Then you were asked to experiment with `targets` - a `Make`-like pipeline tool for R.
 - Invest in _efficient_ reproducibility to scale up projects with confidence. 
 
 This last concept was not addressed directly, but we hope that the small exercise of seeing rebuilds in action got you thinking about projects that might have much more lengthy steps (e.g., several downloads or geo-processing tasks that take hours instead of seconds).
@@ -33,7 +33,7 @@ As with pipelines I, please invite a few collaborators to your repository so the
 
 During the course, we will ask you to build the pipeline, explore how to troubleshoot, and implement some of the best practices you are learning. To do this, you will work with the pipeline locally and commit/push your changes to GitHub for review. 
 
-See details below for how to get started working with code and files that exist within the course repsository:
+See details below for how to get started working with code and files that exist within the course repository:
 
 ---
 
@@ -52,23 +52,29 @@ You can open this project in RStudio by double-clicking the .Rproj file in the `
 
 <hr> 
 
-<details><summary><h2>How to get past the gotchas without getting gotten again</h2></summary>
+<details><summary><h2>How to Get Past the Gotchas Without Getting Gotten Again</h2></summary>
 
 In this course, we're going to go one by one through a series of tips that will help you avoid common pitfalls in pipelines. These tips will help you in the next sections and in future work. A quick list of what's to come:
 
-- :mag: How to debug in a pipeline
-- :eyes: Visualizing and understanding the status of dependencies in a pipeline
-- :speech_balloon: `tar_visnetwork()` and `tar_outdated()` to further interrogate the status of pipeline targets
-- :arrows_clockwise: What is a cyclical dependency and how do I avoid it?
-- :warning: Undocumented file output from a function 
-- :open_file_folder: Using a directory as a dependency 
-- :clipboard: How do I know when to use an object vs a file target or even use a target at all? 
-- :gear: USGS Data Science naming conventions
-- :unlock: Final tips for smart pipelining
+- :mag: [How to debug in a pipeline](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#how-to-debug-in-a-pipeline)
+- :eyes: [Visualizing and understanding the status of dependencies in a pipeline](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#visualizing-and-understanding-the-status-of-dependencies-in-a-pipeline)
+- :speech_balloon: [Using `tar_visnetwork()` and `tar_outdated()` to interrogate the status of a pipeline](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#using-tar_visnetwork-and-tar_outdated-to-interrogate-the-status-of-a-pipeline)
+- :arrows_clockwise: [What is a cyclical dependency and how do I avoid it?](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#what-is-a-cyclical-dependency-and-how-do-i-avoid-it)
+- :warning: [Understanding undocumented file outputs and side effects](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#understanding-undocumented-file-outputs-and-side-effects)
+- :open_file_folder: [Using a directory as a dependency](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#using-a-directory-as-a-dependency)
+- :question: [What to do when you want to specify a non-target input to a command](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#what-to-do-when-you-want-to-specify-a-non-target-input-to-a-command)
+- :clipboard: [Strategies for defining targets in data pipelines](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#strategies-for-defining-targets-in-data-pipelines)
+- :dizzy: [Learn the differences between different types of targets](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#learn-the-differences-between-different-types-of-targets)
+- :gear: [USGS Data Science naming conventions](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#usgs-data-science-naming-conventions)
+- :unlock: [Final tips for smart pipelining](https://github.com/DOI-USGS/ds-pipelines-targets-2-course/blob/main/course-instructions.md#final-tips-for-smart-pipelining)
+
+</details>
 
 <hr>
 
-### How to inspect parts of the pipeline and variables within functions
+<details><summary><h2>How to Debug in a Pipeline</h2></summary>
+
+In this section, we are going to cover how to inspect parts of the pipeline and variables within functions.
 
 If you've written your own functions or scripts before, you may have run into the red breakpoint dot :red_circle: on the left side of your script window:
 
@@ -82,11 +88,11 @@ In `targets`, you can't set a breakpoint in the "normal" way, which would be cli
 
 ---
 
-You have a working, albeit brittle, pipeline in your course repository. You can try it out with `targets::tar_make()`. This pipeline has a number of things you'll work to fix later, but for now, it is a useful reference. The pipeline contains a `_targets.R` file and several functions defined in `.R` files. 
+You have a working, albeit brittle, pipeline in your course repository. You can try it out with `targets::tar_make()`. This pipeline has a number of things you'll work to fix later, but for now, it is a useful reference. The pipeline contains a `_targets.R` makefile and several functions defined in `.R` files. 
 
-So, if you wanted to look at what `download_files` were created within the `download_nwis_data()` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file (make sure to hit save for changes to take affect!). Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
+So, if you wanted to look at what `download_files` were created within the `download_nwis_data()` function, you could set a breakpoint by adding `browser()` to the `"1_fetch/src/get_nwis_data.R"` file (make sure to hit save for changes to take effect!). Hint: to quickly navigate to this function source code from your makefile, you can put your cursor on the name of the function then click F2 and it will take you to the correct location in the corresponding source file!
 
-![browser()](https://user-images.githubusercontent.com/2349007/82158816-bed9bb00-984f-11ea-8892-b2aeb5e4818d.png)
+![browser()](archive/img/download-fxn-browser.png)
 
 There is one more step to get your breakpoint to work in `targets`. You will need to add `callr_function = NULL` to your `tar_make()` call. When you run `tar_make(callr_function = NULL)`, you will land right in the middle of line 8. Give it a try on your own.
 
@@ -98,13 +104,15 @@ To navigate while in browser mode, you can use the buttons at the top of your co
 
 :keyboard: Place a `browser()` in the `for` loop of the `download_nwis_data()` function. Build the pipeline and compare the size of `data_out` through each iteration of the loop using the debugger navigational features. When you are done, don't forget to remove the `browser()` command from that function and then save the R script. Then, consider where you think you might find `browser()` handy in future pipelines. 
 
+</details>
+
 <hr>
 
-### Visualizing and understanding the status of dependencies in a pipeline
+<details><summary><h2>Visualizing and Understanding the Status of Dependencies in a Pipeline</h2></summary>
 
 Seeing the structure of a pipeline as a visual is powerful. Viewing connections between targets and the direction data is flowing in can help you better understand the role of pipelines in data science work. Once you are more familiar with pipelines, using the same visuals can help you diagnose problems. 
 
-Below is a makefile that is very similar to the one you have in your code repository (the option configurations and `source` calls were removed for brevity, but they are unchanged):
+Below is a `_targets.R` file that is very similar to the one you have in your code repository (the library, option configurations, and `source` calls were removed for brevity, but they are unchanged):
 ```r
 
 p1_targets_list <- list(
@@ -119,12 +127,12 @@ p1_targets_list <- list(
   ),
   tar_target(
     nwis_01427207_data_csv,
-    download_nwis_site_data('1_fetch/out/nwis_01427207_data.csv'),
+    download_nwis_site_data(fileout = '1_fetch/out/nwis_01427207_data.csv'),
     format = "file"
   ),
   tar_target(
     nwis_01432160_data_csv,
-    download_nwis_site_data('1_fetch/out/nwis_01432160_data.csv'),
+    download_nwis_site_data(fileout = '1_fetch/out/nwis_01432160_data.csv'),
     format = "file"
   )
 )
@@ -154,17 +162,19 @@ p3_targets_list <- list(
 
 ```
 
-Two file targets (`nwis_01427207_data_csv` and `nwis_01432160_data_csv`) were added to this makefile, but there were no changes to the functions, since `download_nwis_site_data()` already exists and is used to create a single file that contains water monitoring information for a single site. 
+The only difference between your `_targets.R` file and the one above is that two file targets (`nwis_01427207_data_csv` and `nwis_01432160_data_csv`) were added. `download_nwis_site_data()`, the function that is used to create `nwis_01427207_data_csv` and `nwis_01432160_data_csv`, _has not changed_. This point is important because any other targets in the pipeline that call `download_nwis_site_data()`, such as `site_data`, will remain up-to-date and will be skipped when running `tar_make()`.
+
+The functions that are used to create each target (`download_nwis_site_data()`, `style_data`, etc.)  have not been changed. , but there were no changes to the functions, since `download_nwis_site_data()` already exists and is used to create a single file that contains water monitoring information for a single site. 
 
 ---
 
 #### tar_glimpse()
 
-The `targets` package has a nice function called `tar_glimpse()` that we haven't covered yet (if you get an error when you try to use it, run `install.packages("visNetwork")` and then try again). It produces a dependency diagram for the target(s) you pass to the `allow` argument (it will show all of them by default). For this _modified_ makefile, calling that function with the default arguments produces:
+The `targets` package has a nice function called `tar_glimpse()` that we haven't covered yet (if you get an error when you try to use it, run `install.packages("visNetwork")` and then try again). It produces a dependency diagram for the target(s) you pass to the `allow` argument (it will show all of them by default). For this _modified_ `targets.R` file, calling that function with the default arguments produces the following diagram:
 ```r
 targets::tar_glimpse()
 ```
-![glimpse_diagram](https://user-images.githubusercontent.com/13220910/133107103-47735575-9f40-427e-b66c-32ba32102d91.png)
+![glimpse_diagram](archive/img/tar-glimpse-figure.png)
 
 If you run the same command, you'll see something similar but the two new files won't be included. 
 
@@ -198,18 +208,20 @@ tar_manifest()
 
 ---
 
+</details>
+
 <hr>
 
-### Using tar_visnetwork() and tar_outdated() to explore status of pipeline targets
+<details><summary><h2>Using `tar_visnetwork()` and `tar_outdated()` to Interrogate the Status of a Pipeline</h2></summary>
 
 In the image contained within the previous comment, all of the shapes are circles of the same color. `tar_glimpse()` is useful to verify your pipeline connections, but once you start building your pipeline `tar_visnetwork()` creates a dependency diagram with more information and styles the shapes in ways to signify which targets are out of date or don't need to rebuild. 
 
 We've put some fragile elements in the pipeline that will be addressed later, but if you were able to muscle through the failures with multiple calls to `tar_make()`, you likely were able to build the figure at the end of the dependency chain. For this example, we'll stop short of building the `figure_1_png` target by calling `tar_make('site_data_styled')` instead to illustrate an outdated target. 
 
-#### Which targets are incomplete/outdated?
+### Which targets are incomplete/outdated?
 
 The output of `tar_visnetwork()` after running `tar_make('site_data_styled')` (and having never built all targets by running `tar_make()` with no inputs) looks like this:
-![visnetwork](https://user-images.githubusercontent.com/13220910/133108278-d1095b74-b810-49a2-bdfb-310598e07c8b.png)
+![visnetwork](archive/img/updated-visnetwork-figure.png)
 
 Only the colors have changed from the last example, signifying that the darker targets are "complete", but that `figure_1_png` and the two `data.csv` files still don't exist. 
 
@@ -230,7 +242,7 @@ The `figure_1_png` target can become outdated again if there are any modificatio
 tar_visnetwork("3_visualize/out/figure_1.png")
 ```
 
-![visnetwork_fxnchange](https://user-images.githubusercontent.com/13220910/115302212-cd97b480-a127-11eb-9636-930ce7e02cb1.png)
+![visnetwork_fxnchange](archive/img/outdated-visnetwork-figure.png)
 
 In the case of fixed arguments, changing the argument names, values, _or even the order they are specified_ will create a change in the function definition and cause the output target to be considered outdated. Adding comments to the function code does not cause the function to be seen as changed.
 
@@ -238,25 +250,33 @@ In the case of fixed arguments, changing the argument names, values, _or even th
 
 :keyboard: using `tar_visnetwork()` and `tar_outdated()` can reveal unexpected connections between the target and the various dependencies. Comment on some of the different information you'd get from `tar_visnetwork()` that wouldn't be available in the output produced by `tar_glimpse()` or `tar_manifest()`.
 
+</details>
+
 <hr>
 
-### What are cyclical dependencies and how to avoid them?
+<details><summary><h2>What is a Cyclical Dependency and How Do I Avoid It?</h2></summary>
 
-Using `tar_visnetwork()` shows the dependency diagram of the pipeline. Look at previous comments to remind yourself of these visuals. 
+Using `tar_visnetwork()` shows the dependency diagram of the pipeline. As a reminder, here is the `tar_visnetwork` diagram for our current pipeline:
+
+![tar_visnetwork](archive/img/tarvisnetwork-before-cyclical-dep.png)
 
 As a reminder, the direction of the arrows capture the dependency flow, and `site_data` sits on the left, since it is the first target that needs to be built. 
 
 Also note that there are no backward looking arrows. What if `site_data` relied on `site_data_styled`? In order to satisfy that relationship, an arrow would need to swing back up from `site_data_styled` and connect with `site_data`. Unfortunately, this creates a [cyclical dependency](https://en.wikipedia.org/wiki/Circular_dependency) since changes to one target change the other target and changes to that target feed back and change the original target...so on, and so forth...
 
-This potentially infinite loop is confusing to think about and is also something that dependency managers can't support. If your pipeline contains a cyclical dependency, you will get an error when you try to run `tar_make()` or `tar_visnetwork()` that says "dependency graph contains a cycle". We won't say much more about this issue here, but note that in the early days of building pipelines if you run into the cyclical dependency error, this is what's going on. 
+This potentially infinite loop is confusing to think about and is also something that dependency managers can't support and won't be able to visualize. If your pipeline contains a cyclical dependency, you will get an error when you try to run `tar_make()` or `tar_visnetwork()` that says "dependency graph contains a cycle". We won't say much more about this issue here, but note that in the early days of building pipelines if you run into the cyclical dependency error, this is what's going on. Here is an example of what that may look like:
+
+![cyclical dependency example](archive/img/cyclical-dependency.png)
+
+</details>
 
 <hr>
 
-### Creating side-effect targets or undocumented inputs
+<details><summary><h2>Understanding Undocumented File Outputs and Side Effects</h2></summary>
 
 Moving into a pipeline-way-of-thinking can reveal some suprising habits you created when working under a different paradigm. Moving the work of scripts into functions is one thing that helps compartmentalize thinking and organize data and code relationships, but smart pipelines require even more special attention to how functions are designed. 
 
-#### Side-effect targets
+### Side-effect targets
 
 It is tempting to build functions that do several things; perhaps a plotting function also writes a table, or a data munging function returns a data.frame, but also writes a log file. If a function creates a file or output that is not returned by the command (i.e., it is a "side-effect" output), the file is untracked by the dependency manager because it has no `"command"` to specify how it is built. If the side-effect file is relied upon by a later target, changes to the side-effect target will indeed trigger a rebuild of the downstream target, but the dependency manager will have no way of knowing when the side-effect target itself should be rebuilt. :no_mobile_phones:
 
@@ -265,7 +285,7 @@ Maybe the above doesn't sound like a real issue, since the side-effect target wo
 Side-effect targets can be used effectively, but doing so requires a good understanding of implications for tracking them and advanced strategies on how to specify rules and dependencies in a way that carries them along. :ballot_box_with_check:
 ---
 
-#### Undocumented inputs
+### Undocumented inputs
 Additionally, it is tempting to code a filepath within a function which has information that needs to be accessed in order to run. This seems harmless, since functions are tracked by the dependency manager and any changes to those will trigger rebuilds, right? Not quite. If a filepath like `"1_fetch/in/my_metadata.csv"` is specified as an argument to a function but is not also a target in the makefile recipe, any changes to the `"1_fetch/in/my_metadata.csv"` will go unnoticed by the dependency manager, since the string that specifies the file name remains unchanged. The system isn't smart enough to know that it needs to check whether that file has changed. 
 
 To depend on an input file, you first need to set up a simple target whose command returns the filepath of said file. Like so:
@@ -286,33 +306,19 @@ tar_target(map_of_sites, make_a_map(metadata_file = "1_fetch/in/my_metadata.csv"
 
 As a general rule, do not put filepaths in the body of a function. :end:
 
+</details>
+
 <hr>
 
-### How to depend on a directory for changes
+<details><summary><h2>Using a Directory as a Dependency</h2></summary>
 
 You might have a project where there is a directory :file_folder: with a collection of files. To simplify the example, assume all of the files are `.csv` and have the same format. As part of the hypothetical project goals, these files need to be combined and formatted into a single plottable data.frame. 
 
 In a data pipeline, we'd want assurance that any time the number of files changes, we'd rebuild the resulting data.frame. Likewise, if at any point the _contents_ of any one of the files changes, we'd also want to re-build the data.frame. 
 
-This hypothetical example could be coded as 
+This hypothetical example could be coded as: 
 
-```r
-library(targets)
-source("combine_files.R")
-
-list(
-  tar_target(in_files, 
-             c('1_fetch/in/file1.csv',
-               '1_fetch/in/file2.csv',
-               '1_fetch/in/file3.csv'), 
-             format = "file"),
-  tar_target(
-    plot_data, 
-    combine_into_df(in_files)
-  ),
-  tar_target(figure_1_png, my_plot(plot_data))
-)
-```
+![example file targets](archive/img/example-directory-target-1.png)
 
 While this solution would work, it is less than ideal because it doesn't scale well to **many** files, nor would it adapt to new files coming into the `1_fetch/in` directory :file_folder: (the pipeline coder would need to manually add file names to the `in_files` target).
 
@@ -321,25 +327,20 @@ While this solution would work, it is less than ideal because it doesn't scale w
 Lucky for us, the `targets` package can handle having a directory as a target. If you add a target for a directory, the pipeline will track changes to the directory and will rebuild if it detects changes to the contents a file, the name of a file, or the number of files in the directory changes. 
 
 To track changes to a directory, add the directory as a file target (see the `in_dir` target below). Important - you must add `format = "file"`! Then, you can use that directory as input to other functions. Note that you'd also need to modify your `combine_into_df` function to use `dir(in_dir)` to generate the file names since `in_dir` is just the name of the directory. 
-```r
-library(targets)
-source("combine_files.R")
 
-list(
-  tar_target(in_dir, '1_fetch/in', format = "file"),
-  tar_target(
-    plot_data, 
-    combine_into_df(in_dir)
-  ),
-  tar_target(figure_2_png, my_plot(plot_data))
-)
-```
+![example file targets](archive/img/example-directory-target-2.png)
 
-Yay! :star2: This works because a change to any one of the files (or an addition/deletion of a file) in `1_fetch/in` will result in a rebuild of `in_dir`, which would cause a rebuild of `plot_data`. 
+Yay! :star2: This works because a change to any one of the files (or an addition/deletion of a file) in `1_fetch/in` will result in a rebuild of `in_dir`, which would cause a rebuild of `plot_data`.
+
+By experimenting with this type of target, we identified a few caveats that you may want to consider by for using a directory as a file target:
+
+Based on experiments that we've run, we have found that using a directory as a file target generally works best when the files you are tracking exist _before_ the pipeline is run or when the files you are tracking only change _between_ pipeline runs. For example, a directory target can be useful if you are working with data files that a collaborator manually turns over to you. However, you would not want to use a directory target if you pipeline dynamically downloads data and saves files. Through a series of experiments, we have found that the pipeline does not consistently or predictably capture and track these dynamically downloaded files.
+
+</details>
 
 <hr>
 
-### What to do when you want to specify a non-target input to a command
+<details><summary><h2>What To Do When You Want to Specify a Non-target Input to a Command</h2></summary>
 
 Wow, we've gotten this far and haven't written a function that accepts anything other than an object target or a file target. I feel so constrained!
 
@@ -405,20 +406,18 @@ list(
 ```
 By adding this `dummy` object to our `command` argument for the `work_files` target, we can modify the dummy contents any time we want to force the update of `work_files`. Updating the `dummy` argument to today's date allows us to simultaneously force the update and record when we last downloaded the data from ScienceBase. You may see the use of these `dummy` arguments in spots where there is no other trigger that would cause a rebuild, such as pulling data from a remote webservice or website when `targets` has no way of knowing that new data are available on the same service URL.
 
----
-
 </details>
 
 <hr>
 
-<details><summary><h2>Strategies for defining targets in data pipelines</h2></summary>
+<details><summary><h2>Strategies for Defining Targets in Data Pipelines</h2></summary>
 
 ### How to make decisions on how many targets to use and how targets are defined
 
 We've covered a lot of content about the rules of writing good pipelines, but pipelines are also very flexible! Pipelines can have as many or as few targets as you would like, and targets can be as big or as small as you would like. The key theme for all pipelines is that they are reproducible codebases to document your data analysis process for both humans and machines. In this next section, we will learn about how to make decisions related to the number and types of targets you add to a pipeline.
 
 ### Background 
-Isn't it satisfying to work through a fairly lengthy data workflow and then return to the project and it _just works_? For the past few years, we have been capturing the steps that go into creating results, figures, or tables appearing in data visualizations or research papers. There are recipes for reproducibility used in complex, collaborative modeling projects, such as in [this reservoir temperature modeling pipeline](https://code.usgs.gov/wma/wp/res-temperature-process-models) and in [this pipeline to manage downloads of forecasted meteorological driver data](https://code.usgs.gov/wma/wp/forecasted-met-drivers). _Note that you need to be able to access internal USGS websites to see these examples and these were developed early on in the Data Science adoption of `targets` so may not showcase all of our adopted best practices_.
+Isn't it satisfying to work through a fairly lengthy data workflow and then return to the project and it _just works_? For the past few years, we have been capturing the steps that go into creating results, figures, or tables appearing in data visualizations or research papers. There are recipes for reproducibility used in complex, collaborative modeling projects, such as [this reservoir temperature modeling pipeline](https://code.usgs.gov/wma/wp/res-temperature-process-models), [this pipeline to manage downloads from the Water Quality Portal](https://github.com/DOI-USGS/ds-pipelines-targets-example-wqp), or [this data viz pipeline that evaluates monthly stream flows](https://github.com/DOI-USGS/flow-tiles). _Note that you need to be able to access internal USGS websites to see these examples and these were developed early on in the Data Science adoption of `targets` so may not showcase all of our adopted best practices_.
 
 ---
 
@@ -480,11 +479,17 @@ This makefile recipe generates a multipanel map, which colors [HUC8 watersheds](
 
 ---
 
-The `"figures/multi_panel_constituents.png"` figure takes a while to plot, so it is a somewhat "expensive" target to iterate on when it comes to style, size, colors, and layout (it takes 3 minutes to plot for me). But the plotting expense is dwarfed by the amount of time it takes to build each water quality data "object target", since `get_wqp_data` uses a web service that queries a large database and returns a result; the process of fetching the data can sometimes take over thirty minutes (`nitrogen_all` is a target that contains the locations of all of the sites that have nitrogen water quality data samples). 
+One key consideration when defining separate targets in a pipeline is "how long does it take to build each target?"
+
+For example, the `"figures/multi_panel_constituents.png"` figure defined above takes around to three minutes to plot. For some, a three minute build could be considered "expensive" because that delay could make it challenging to iterate on style, size, colors, and layout without distraction.
+
+However, when compared to other targets in the same pipeline, building `"figures/multi_panel_constituents.png"` _is not_ expensive. The plotting expense is dwarfed by the amount of time it takes to build each water quality data "object target" upstream of the final figure. These water quality targets can sometimes take over thirty minutes to build , since `get_wqp_data` uses a web service that queries a large database and returns a result; the process of fetching the data can sometimes take over thirty minutes (`nitrogen_all` is a target that contains the locations of all of the sites that have nitrogen water quality data samples). 
 
 Alternatively, the `map_config*` object above builds in a fraction of second, and contains some simple information that is used to fetch and process the proper boundaries with the `get_mutate_HUC8s` function, and includes some plotting details for the final map (such as plotting color divisions).
 
-This example, although dated, represents a real project that caused us to think carefully about how many targets we use in a recipe and how complex their underlying functions are. Decisions related to targets are often motivated by the intent of the pipeline. In the case above, our intent at the time was to capture the data and processing behind the plot in the paper in order to satisfy our desire for reproducibility. 
+This example, although dated, represents a real project that caused us to think carefully about how many targets we use in a recipe and how complex their underlying functions are. Decisions related to targets are often motivated by the intent of the pipeline. In the case above, our intent at the time was to capture the data and processing behind the plot in the paper in order to satisfy our desire for reproducibility.
+
+Critically thinking through considerations such as target build times and how to best subdivide the workflows will be an important when you start building your own pipelines.
 
 ---
 
@@ -503,15 +508,11 @@ Additional reasons to create a target include:
 
 But of course there is a cost to creating many targets: you'll end up typing a lot more, a lot of additional files will be created that need to be stored, and the addition of more targets makes it is harder to navigate the `makefile`.
 
-</details>
-
 <hr>
 
-<details><summary><h2>Refactor the existing pipeline to use more effective targets</h2></summary>
+### :keyboard: Activity: Make modifications to the working, but less than ideal, pipeline that exists within your course repository
 
-:keyboard: Activity: Make modifications to the working, but less than ideal, pipeline that exists within your course repository
-
-Within the course repo you should see only a `_targets.R` and directories with code or placeholder files for each phase. You should be able to run `tar_make()` and build the pipeline, although it may take numerous tries, since some parts of this new workflow are brittle. Some hints to get you started: the `site_data` target is too big, and you should consider splitting it into a target for each site, perhaps using the `download_nwis_site_data()` function directly to write a file. Several of the `site_data_` targets are too small and it might make sense to combine them.
+Within the course repo you should see only a `_targets.R` makefile and directories with code or placeholder files for each phase. You should be able to run `tar_make()` and build the pipeline, although it may take numerous tries, since some parts of this new workflow are brittle. Some hints to get you started: the `site_data` target is too big, and you should consider splitting it into a target for each site, perhaps using the `download_nwis_site_data()` function directly to write a file. Several of the `site_data_` targets are too small and it might make sense to combine them.
 
 ---
 
@@ -579,9 +580,6 @@ $countBins
 
 (Not as convenient as accessing the data with `tar_read('map.config')` instead, which is what we'd recommend).
 
----
-:keyboard: Add a comment to this issue so we know you're ready to continue learning
-
 <hr>
 
 ### More details on file targets
@@ -590,27 +588,19 @@ File targets are very flexible and, of course, are also easy to share or store e
 
 Additionally, many file formats are either language agnostic (e.g., csv, tsv, txt, nc files) _or_ are meant to be shared across languages, such as the [feather format](https://blog.rstudio.com/2016/03/29/feather/) designed for exchange between R and Python.
 
-When specifying a file target in a makefile, the path to the file needs to be either absolute or relative to the working directory that the `_targets.R` file is in. 
+When specifying a file target in a makefile, the path to the file needs to be either absolute or relative to the working directory that the `_targets.R` makefile is in. 
 
 ---
 
 Since file targets in the `targets` package are not the default and require you to add `format = "file"`, you may feel deterred from using files as targets. It's true, the benefits of files are often small compared to the advantages of using objects. However, we still recommend that files be used liberally, especially for targets that you'll want to access outside of R (e.g., browsing figure files in Finder/Windows Explorer; opening a spatial data file in a GIS) or share with others (e.g., using outputs from one pipeline as inputs to another). 
 
----
-:keyboard: Activity: Close this issue when you are ready to move on to the next assignment
-
-</details>
-
-<hr>
-
-<details><summary><h2>Exchange object and file targets in your pipelines</h2></summary>
+###:keyboard: Activity: Exchange object and file targets in your pipelines
 
 You should now have a working pipeline that can run with `tar_make()`. Your current pipeline likely only has one file target, which is the final plot. 
 
 We want you to get used to exchanging objects for files and vice versa, in order to expose some of the important differences that show up in the makefile and also in the way the functions are put together. 
 
-
-:keyboard: Activity: Open a PR where you swap at least two file targets to be object targets, and change one object target to be a file target. Run `tar_make` and open a pull request. Paste your build status as a comment to the PR and assign your designated course instructor as a reviewer. 
+Open a PR where you swap at least two file targets to be object targets, and change one object target to be a file target. Run `tar_make` and open a pull request. Paste your build status as a comment to the PR and assign your designated course instructor as a reviewer. 
 
 You should create a new local branch on which to save these changes. Let's call it "swap-targets" to capture the goals of this activity.
 
@@ -626,7 +616,7 @@ git push -u origin swap-targets
 
 <hr>
 
-<details><summary><h2>USGS Data Science conventions</h2></summary>
+<details><summary><h2>USGS Data Science Naming Conventions</h2></summary>
 
 So far you’ve learned a lot about the mechanics of using **targets**, but there are also a few conventions that USGS Data Science practitioners use to maintain consistency across projects. These conventions make it easier to jump into a new project, provide peer review, or learn a new technique from someone else’s pipeline, since you are already familiar with the structure.
 
@@ -700,7 +690,7 @@ git push -u origin use-phases
 
 <hr>
 
-<details><summary><h2>Final tips</h2></summary>
+<details><summary><h2>Final Tips for Smart Pipelining</h2></summary>
 
 You are nearly done with the second pipelines course! We have a few final thoughts before you level up your pipelines capability :trophy:
 
@@ -751,7 +741,7 @@ p2_targets_list = list(
 
 <hr>
 
-<details><summary><h2>What's next</h2></summary>
+<details><summary><h2>What's Next</h2></summary>
 
 You are awesome! :star2: :collision: :tropical_fish:
 
